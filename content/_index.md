@@ -39,7 +39,6 @@ features:
       title: "Safety-Focused Cleanup"
       description: "Mold Remediation Fowler and Sewage Cleanup Fowler require careful containment, sanitation awareness, and safe handling procedures to protect occupants and property."
   bottom_text: "From sudden leaks to storm-related flooding, our team helps Fowler property owners move from emergency response to cleanup, drying, and restoration with steady communication."
-
 solutions:
   title: "Water Damage Restoration Services in Fowler, CA"
   items:
