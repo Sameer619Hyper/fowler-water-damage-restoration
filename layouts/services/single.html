@@ -1,0 +1,372 @@
+{{ define "main" }}
+
+<main>
+  <section id="services" class="service-hero">
+    <div class="container">
+      <div class="service-hero-grid">
+        <div class="service-hero-content">
+          {{ with .Params.hero_badge }}
+            <div class="service-badge">{{ . }}</div>
+          {{ end }}
+
+          <h1>
+            {{ with .Params.hero_title }}
+              {{ . | safeHTML }}
+            {{ else }}
+              {{ .Title }}
+            {{ end }}
+          </h1>
+
+          {{ with .Params.hero_description }}
+            <p>{{ . }}</p>
+          {{ end }}
+
+          {{ with .Params.hero_button }}
+            <div>
+              <a href="{{ .url | safeURL  }}" class="btn-primary">
+                {{ .text | default `Book now` }}
+              </a>
+            </div>
+          {{ end }}
+        </div>
+
+        {{ with .Params.hero_image }}
+          <div class="service-hero-image">
+            <img src="{{ .src }}" alt="{{ .alt | default $.Title }}">
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  {{ with .Params.intro }}
+  <section>
+    <div class="container">
+      <div class="service-detail-text">
+        <h2 class="section-title">
+          {{ .title | safeHTML }}
+        </h2>
+
+        {{ range .paragraphs }}
+          <p>{{ . | markdownify }}</p>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with .Params.features }}
+  <section id="why-us" class="bg-light">
+    <div class="container">
+      <h2 class="section-title">{{ .title | safeHTML }}</h2>
+
+      <div class="feature-list">
+        {{ range .items }}
+          {{ $icon := .icon | default `✓` }}
+          <div class="feature-item">
+            <div class="feature-icon">
+              {{ if hasPrefix $icon "fa-" }}
+                <i class="fa-solid {{ $icon }}" aria-hidden="true"></i>
+              {{ else if or (hasPrefix $icon "fas ") (hasPrefix $icon "far ") (hasPrefix $icon "fab ") (hasPrefix $icon "fa ") (in $icon " fa-") }}
+                <i class="{{ $icon }}" aria-hidden="true"></i>
+              {{ else }}
+                {{ $icon }}
+              {{ end }}
+            </div>
+            <h3>{{ .title }}</h3>
+            <p>{{ .description }}</p>
+          </div>
+        {{ end }}
+      </div>
+
+      {{ with .bottom_text }}
+        <div class="service-detail-text" style="margin-top: 48px;">
+          <p>{{ . }}</p>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with .Params.solutions }}
+  <section>
+    <div class="container">
+      <h2 class="section-title">{{ .title | safeHTML }}</h2>
+
+      <div class="services-grid">
+        {{ range .items }}
+          {{ $icon := .icon | default `🔧` }}
+          <div class="service-card">
+            <div class="service-icon">
+              {{ if hasPrefix $icon "fa-" }}
+                <i class="fa-solid {{ $icon }}" aria-hidden="true"></i>
+              {{ else if or (hasPrefix $icon "fas ") (hasPrefix $icon "far ") (hasPrefix $icon "fab ") (hasPrefix $icon "fa ") (in $icon " fa-") }}
+                <i class="{{ $icon }}" aria-hidden="true"></i>
+              {{ else }}
+                {{ $icon }}
+              {{ end }}
+            </div>
+            <h3>{{ .title }}</h3>
+            <p>{{ .description }}</p>
+          </div>
+        {{ end }}
+      </div>
+
+      {{ with .bottom_text }}
+        <div class="service-detail-text" style="margin-top: 48px;">
+          <p>{{ . }}</p>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with .Params.guarantees }}
+  <section class="bg-light">
+    <div class="container">
+      <h2 class="section-title">{{ .title | safeHTML }}</h2>
+
+      <div class="guarantees-grid">
+        {{ range .items }}
+          {{ $icon := .icon | default `🏅` }}
+          <div class="guarantee-card">
+            <div class="guarantee-icon">
+              {{ if hasPrefix $icon "fa-" }}
+                <i class="fa-solid {{ $icon }}" aria-hidden="true"></i>
+              {{ else if or (hasPrefix $icon "fas ") (hasPrefix $icon "far ") (hasPrefix $icon "fab ") (hasPrefix $icon "fa ") (in $icon " fa-") }}
+                <i class="{{ $icon }}" aria-hidden="true"></i>
+              {{ else }}
+                {{ $icon }}
+              {{ end }}
+            </div>
+            <h3>{{ .title }}</h3>
+            <p>{{ .description }}</p>
+          </div>
+        {{ end }}
+      </div>
+
+      {{ with .bottom_text }}
+        <div class="service-detail-text" style="margin-top: 48px; text-align: center;">
+          <p>{{ . }}</p>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with .Params.process }}
+  <section id="process">
+    <div class="container">
+      <h2 class="section-title">{{ .title | safeHTML }}</h2>
+
+      <div class="process-steps">
+        {{ range $i, $item := .steps }}
+          <div class="step">
+            <div class="num">{{ add $i 1 }}</div>
+            <h3>{{ $item.title }}</h3>
+            <p>{{ $item.description }}</p>
+          </div>
+        {{ end }}
+      </div>
+
+      {{ with .bottom_text }}
+        <div class="service-detail-text" style="margin-top: 40px;">
+          <p>{{ . }}</p>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with .Params.testimonials }}
+  <section class="bg-light">
+    <div class="container">
+      <h2 class="section-title">{{ .title | safeHTML }}</h2>
+
+      {{ range .items }}
+        <div class="testimonial-block">
+          <div style="font-size: 28px; color: var(--primary); margin-bottom: 16px;">“</div>
+          <p style="font-size: 1.1rem; margin-bottom: 20px;">{{ .quote }}</p>
+          <p><strong>- {{ .author }}</strong></p>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with .Params.service_area }}
+  <section id="area">
+    <div class="container">
+      <h2 class="section-title">{{ .title | safeHTML }}</h2>
+      <div style="text-align: center; max-width: 1000px; margin: 0 auto;">
+        {{ with .description }}
+          <p style="margin-bottom: 28px;">{{ . }}</p>
+        {{ end }}
+
+        {{ $currentServiceType := $.Params.service_type | default `` }}
+        {{ $relatedPages := slice }}
+
+        {{ if $currentServiceType }}
+          {{ range where $.Site.RegularPages "Section" "services" }}
+            {{ if and (eq (.Params.service_type | default ``) $currentServiceType) (ne .RelPermalink $.RelPermalink) }}
+              {{ $relatedPages = $relatedPages | append . }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+
+        {{ if gt (len $relatedPages) 0 }}
+          <div class="area-badges">
+            {{ range $relatedPages }}
+              <span class="badge"><i class="fas fa-map-marker-alt"></i><a href="{{ .RelPermalink }}">{{ .Params.city_name }}</a></span>
+            {{ end }}
+          </div>
+        {{ end }}
+
+        {{ with .map_embed_url }}
+          {{ $mapEmbed := printf "%v" . }}
+          <div class="map-container">
+            {{ if in (lower $mapEmbed) "<iframe" }}
+              {{ $mapEmbed | safeHTML }}
+            {{ else }}
+              <iframe
+                src="{{ $mapEmbed }}"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            {{ end }}
+          </div>
+        {{ end }}
+
+        <div class="area-links">
+          {{ with .directions_url }}
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer">Get directions to our office</a>
+          {{ end }}
+          {{ with .full_map_url }}
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer">View full service area map</a>
+          {{ end }}
+        </div>
+
+        {{ with .notice }}
+          <div style="margin-top: 32px; background: #eef2ff; border-radius: 36px; padding: 24px; font-weight: 500;">
+            {{ . }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with .Params.faq }}
+  <section id="faq" class="bg-light">
+    <div class="container">
+      <h2 class="section-title">{{ .title | safeHTML }}</h2>
+      <div style="max-width: 800px; margin: 0 auto;">
+        {{ range .items }}
+          <div class="faq-item">
+            <div class="faq-question">
+              {{ .question }}
+              <span>+</span>
+            </div>
+            <div class="faq-answer">{{ .answer }}</div>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with .Params.cta }}
+  <section id="contact">
+    <div class="container">
+      <div class="cta-card">
+        <h2 style="font-size: 2rem; font-weight: 800;">{{ .title }}</h2>
+        {{ with .description }}
+          <p style="margin-top: 12px; opacity: 0.9;">{{ . }}</p>
+        {{ end }}
+
+<iframe src="//leads.leadsmartinc.com/?api_key=eccf565586cda416df8b89f66df641fee9a1bcb8&affiliate_source=smramr1&funnel=3&category=206&step=1&buttons=btn-success" width="100%" height="450" frameborder="0"></iframe>
+
+        {{ with .footer_text }}
+          <p style="margin-top: 24px; font-size: 0.85rem;">{{ . | safeHTML }}</p>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ if .Content }}
+  <section>
+    <div class="container rich-text">
+      <div class="service-detail-text">
+        {{ .Content }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+</main>
+
+<script>
+  const hamburger = document.getElementById('hamburgerBtn');
+  const navLinks = document.getElementById('navLinks');
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === "#" || targetId === "") return;
+
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        if (navLinks && navLinks.classList.contains('show')) {
+          navLinks.classList.remove('show');
+        }
+      }
+    });
+  });
+
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const questionDiv = item.querySelector('.faq-question');
+    if (!questionDiv) return;
+
+    questionDiv.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      faqItems.forEach(i => i.classList.remove('active'));
+      if (!isActive) item.classList.add('active');
+    });
+  });
+
+  const bookBtn = document.getElementById('serviceBookBtn');
+  if (bookBtn) {
+    bookBtn.addEventListener('click', () => {
+      const nameInput = document.getElementById('serviceName');
+      const phoneInput = document.getElementById('servicePhone');
+      const emailInput = document.getElementById('serviceEmail');
+
+      const name = nameInput?.value.trim();
+      const phone = phoneInput?.value.trim();
+
+      if (!name || !phone) {
+        alert('Please provide your name and phone number so we can contact you.');
+        return;
+      }
+
+      alert(`Thank you ${name}! A specialist will call you at ${phone} shortly.`);
+
+      if (nameInput) nameInput.value = '';
+      if (phoneInput) phoneInput.value = '';
+      if (emailInput) emailInput.value = '';
+    });
+  }
+</script>
+
+{{ end }}

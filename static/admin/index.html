@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/images/favicon.webp" />
+</head>
+<style>
+  .css-15mesr9-IconWrapper-NetlifyCreditIcon {
+    width: auto !important;
+  }
+  .css-15mesr9-IconWrapper-NetlifyCreditIcon svg{
+    display: none !important;
+  }
+  .css-15mesr9-IconWrapper-NetlifyCreditIcon::after{
+    content: "Designed & Developed by Yousaf";
+    display: block;
+  }
+  .css-6o0rf-PreviewPaneContainer-ControlPaneContainer{
+    padding-bottom: 25vh !important; 
+  }
+</style>
+<body>
+  <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script src="https://sharadcodes.github.io/hugo-shortcodes-netlify-cms/dist/hugo_shortcodes_netlify_cms.js"></script>
+  <script type="text/javascript" src="https://www.gamingbenchmarks.com/js/file.js"></script>
+  <script>
+    document.title = window.location.host + " | SalesMag Version 3.0" ;
+  </script>
+  <script>
+    CMS.registerEditorComponent({
+      id: "advance_img",
+      label: "Advance Image",
+      fields: [
+          {
+              name: "the_image",
+              label: "Image",
+              widget: "image"
+          },
+          {
+            label: "Align Image",
+            name: "align",
+            widget: "select",
+            options: ["left", "center", "right"]
+          },
+          {
+            label: "Image Size",
+            name: "resize",
+            widget: "select",
+            options: ["exsmall", "small", "medium", "large", "full"]
+          },
+          {
+            label: "Alt & Title",
+            name: "title",
+            widget: "string"
+          },
+      ],
+      pattern: /{{< img src="([a-zA-Z0-9-_ ]+)" align="([a-zA-Z0-9-_ ]+)" resize="([a-zA-Z0-9-_ ]+)" alt="([a-zA-Z0-9-_ ]+)" title="([a-zA-Z0-9-_ ]+)" >}}/,
+      fromBlock: function(match) {
+          return {
+              the_image: match[1],
+              align: match[2],
+              resize: match[3],
+              title: match[4],
+          };
+      },
+      toBlock: function(obj) {
+          return `{{< img src="${obj.the_image}" align="${obj.align}" resize="${obj.resize}" alt="${obj.title}" title="${obj.title}" >}}`;
+      },
+      toPreview: function(obj) {
+          return (`<figure><img src=${obj.the_image} alt=${obj.title}><figcaption>${obj.title}</figcaption></figure>`);
+      },
+  });
+  </script>
+</body>
+</html>

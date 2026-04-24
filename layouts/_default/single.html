@@ -1,0 +1,80 @@
+{{ define "main" }}
+
+<main>
+    <div class="page-hero">
+        <div class="container">
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}
+                <p>{{ . }}</p>
+            {{ end }}
+        </div>
+    </div>
+
+    <section>
+        <div class="container content-area">
+            {{ .Content }}
+        </div>
+    </section>
+
+    {{ if .Params.show_contact_form }}
+    <section class="bg-light">
+        <div class="container">
+            <div class="contact-card">
+                <h2 style="font-size: 1.9rem; font-weight: 800; margin-bottom: 12px; text-align: center;">
+                    {{ .Params.contact_form_title | default "Send us a message" }}
+                </h2>
+
+                <p style="text-align: center; margin-bottom: 32px; color: #475569;">
+                    {{ .Params.contact_form_text | default "We'll get back to you within 24 hours." }}
+                </p>
+
+                <iframe src="//leads.leadsmartinc.com/?api_key=eccf565586cda416df8b89f66df641fee9a1bcb8&affiliate_source=smramr1&funnel=3&category=206&step=1&buttons=btn-success" width="100%" height="600" frameborder="0"></iframe>
+            </div>
+        </div>
+    </section>
+    {{ end }}
+</main>
+
+<script>
+    const hamburger = document.getElementById('hamburgerBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    }
+
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+
+            if (!name) {
+                alert("Please enter your name.");
+                return;
+            }
+
+            alert(`Thanks ${name}! Your message has been sent. We'll get back to you soon.`);
+            contactForm.reset();
+        });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === "#" || targetId === "") return;
+
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (navLinks && navLinks.classList.contains('show')) {
+                    navLinks.classList.remove('show');
+                }
+            }
+        });
+    });
+</script>
+{{ end }}

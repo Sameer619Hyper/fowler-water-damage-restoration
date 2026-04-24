@@ -1,0 +1,27 @@
+<div style="display: flex; gap: 20px;">
+
+    {{ partial "single/sidebar.html" . }}
+
+    <div id="main-content">
+
+        {{ partial "single/players/player-info.html" . }}
+        {{ partial "single/players/player-specs.html" . }}
+
+        <!-- Game Selection Dropdown -->
+        <div style="text-align: center; margin: 20px auto; max-width: 800px;">
+            <label for="game-select" style="font-size: 14px; color: #333; margin-right: 10px;">Select a Game:</label>
+            <select id="game-select" style="padding: 10px; font-size: 14px; border: 1px solid #ccc; border-radius: 5px;">
+                {{ range .Params.games }}
+                <option value="{{ .game_id }}">{{ .game_name }}</option>
+                {{ end }}
+            </select>
+        </div>
+
+        {{ partial "single/players/game-settings.html" . }}
+        {{ partial "single/players/general-settings.html" . }}
+        {{ partial "single/players/pc-specs.html" . }}
+        {{ partial "single/players/team-players.html" . }}
+        {{ partial "main/disqus.html" . }}
+
+    </div>
+</div>

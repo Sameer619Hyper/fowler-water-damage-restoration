@@ -1,0 +1,86 @@
+<div class="main-container">
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <!-- Game Image Section -->
+        <div style="flex: 1; max-width: 200px;">
+            {{ with .Params.game_image }}
+            <img src="{{ . }}" alt="{{ $.Title }}" style="width: 100%; height: auto; border-radius: 5px; object-fit: cover;" loading="lazy">
+            {{ else }}
+            <img src="/images/default-game-image.webp" alt="Default Game Image" style="width: 100%; height: auto; border-radius: 5px; object-fit: cover;" loading="lazy">
+            {{ end }}
+        </div>
+
+        <!-- Game Title and Description Section -->
+        <div style="flex: 2;">
+            <h1 style="margin: 0; font-size: 2rem;">{{ $.Title }} - Pro Game Settings</h1>
+            <p style="margin-top: 10px; font-size: 1rem; color: #555;">
+                {{ with $.Description }}
+                {{ . }}
+                {{ else }}
+                No description available for this game.
+                {{ end }}
+            </p>
+            <!-- Single Button Section -->
+            <div style="margin-top: 15px;">
+                <a href="/" style="text-decoration: none; padding: 10px 20px; background-color: #007bff; color: white; border-radius: 5px; font-size: 1rem;">
+                    View Players
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Player Section -->
+<div class="main-container">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        {{ $pageTitle := $.Title }}
+        {{ $foundMatch := false }} <!-- Flag to track if a matching player is found -->
+        {{ range where .Site.RegularPages "Section" "players" }}
+        {{ $matches := false }}
+        {{ range .Params.games }}
+            {{ if eq .game_name $pageTitle }}
+                {{ $matches = true }}
+            {{ end }}
+        {{ end }}
+        {{ if $matches }}
+        {{ $foundMatch = true }} <!-- Set flag to true if a match is found -->
+        <a href="{{ .RelPermalink }}" style="text-decoration: none; color: inherit; display: block; width: calc(33.33% - 10px);">
+            <div style="display: flex; flex-direction: column; border: 1px solid #ddd; border-radius: 5px; overflow: hidden; background-color: #f9f9f9;">
+                <div style="width: 100%; overflow: hidden; display: flex; align-items: center; justify-content: center; background-color: #fff;">
+                    {{ with .Params.player_image }}
+                    <img src="{{ . }}" alt="{{ $.Title }}" style="max-width: 100%; max-height: 100%; object-fit: cover;" loading="lazy">
+                    {{ else }}
+                    <img src="/images/default-player-image.webp" alt="Default Player Image" style="max-width: 100%; max-height: 100%; object-fit: cover;" loading="lazy">
+                    {{ end }}
+                </div>
+                <div style="padding: 10px;">
+                    <h3 style="margin: 0; font-size: 1.2rem;">{{ .Params.player_name }}</h3>
+                    <div style="display: flex; font-size: 14px; justify-content: space-between; align-items: center; margin: 5px 0;">
+                        <span>
+                            <i class="fas fa-users" style="margin-right: 5px;"></i>Team: 
+                            {{ with .Params.team }}
+                                {{ . }}
+                            {{ else }}
+                                Not Available
+                            {{ end }}
+                        </span>
+                    </div>
+                    <div style="font-size: 14px; color: #8f8f8f;">
+                        {{ with .Params.description }}
+                        {{ . }}
+                        {{ else }}
+                        No description available for this player.
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </a>
+        {{ end }}
+        {{ end }}
+        <!-- Show 'No game found' if no matching players were displayed -->
+        {{ if not $foundMatch }}
+        <div style="width: 100%; text-align: center; font-size: 1.5rem; color: #8f8f8f;">
+            No player found.
+        </div>
+        {{ end }}
+    </div>
+</div>

@@ -1,0 +1,120 @@
+<!-- Tab Contents -->
+{{ range .Params.games }}
+<div class="tab-content" id="{{ .game_id }}" style="display: none;">
+    <h2 id="{{ $.Params.player_name | urlize }}-{{ .game_name | urlize}}-settings">
+        {{ $.Params.player_name }} {{ .game_name }} Settings
+    </h2>
+
+    <!-- Game Settings -->
+    {{ range .game_settings }}
+    <div class="game-settings-box">
+        <h3 id="{{ .setting_type | urlize }}">{{ .setting_type }}</h3>
+        <table>
+            <tbody>
+                {{ range .settings }}
+                <tr>
+                    <td>{{ .setting_name }}</td>
+                    <td>{{ .value }}</td>
+                </tr>
+                {{ end }}
+            </tbody>
+        </table>
+    </div>
+    {{ end }}
+</div>
+{{ end }}
+
+<style>
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content h2 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .tab-content h3 {
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .game-settings-box {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .game-settings-box table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .game-settings-box tbody {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .game-settings-box tr {
+        display: flex;
+        flex: 0 0 calc(50% - 10px);
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .game-settings-box td {
+        flex: 1;
+    }
+
+    .game-settings-box td:first-child {
+        color: #475569;
+        text-align: left; /* Ensure left alignment */
+    }
+
+    .game-settings-box td:nth-child(2) {
+        color: #000000;
+        text-align: right; /* Ensure right alignment */
+    }
+
+    /* Mobile-friendly adjustments */
+    @media (max-width: 768px) {
+        .game-settings-box tbody {
+            gap: 5px;
+        }
+
+        .game-settings-box tr {
+            flex: 0 0 100%; /* Full width on smaller screens */
+        }
+
+        .game-settings-box td {
+            font-size: 0.9rem; /* Slightly smaller font for better fit */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .game-settings-box tbody {
+            gap: 5px;
+        }
+
+        .game-settings-box tr {
+            flex-direction: column; /* Stack content vertically for narrow screens */
+            align-items: flex-start;
+        }
+
+        .game-settings-box td {
+            flex: none; /* Allow table cells to adjust naturally */
+            width: 100%;
+            text-align: left; /* Ensure left alignment on narrow screens */
+            padding: 5px 0;
+        }
+
+        .game-settings-box td:nth-child(2) {
+            text-align: right; /* Keep right alignment for second column */
+        }
+    }
+</style>

@@ -1,0 +1,136 @@
+{{ range .Params.product_sections }}
+<div class="main-container">
+    <h2 id="{{ $.Params.player_name | urlize }}-pc-specs">{{ $.Params.player_name }} PC Specs</h2>
+    <div class="product-container">
+        {{ range .products }}
+        <div class="product-box">
+            <!-- Image and Link -->
+            {{ if .product_link }}
+            <a href="{{ .product_link }}" target="_blank" class="product-link">
+                <img 
+                src="{{ if .product_image }}{{ .product_image }}{{ else }}/uploads/default-product-image.webp{{ end }}" 
+                alt="{{ .product_name }}" 
+                class="product-image" 
+                loading="lazy" 
+                width="300" 
+                height="300">
+                <span class="product-name">{{ .product_name }}</span>
+            </a>
+            {{ else }}
+            <div class="product-content">
+                <img 
+                src="{{ if .product_image }}{{ .product_image }}{{ else }}/uploads/default-product-image.webp{{ end }}" 
+                alt="{{ .product_name }}" 
+                class="product-image" 
+                loading="lazy" 
+                width="300" 
+                height="300">
+                <span class="product-name">{{ .product_name }}</span>
+            </div>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+
+<style>
+/* Static Box Styling */
+.main-container {
+    margin: 20px 0;
+}
+
+/* Header Styling */
+.main-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Product Container */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Product Box */
+.product-box {
+    width: calc(33.33% - 10px);
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Product Link */
+.product-link {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Product Content */
+.product-content{
+    text-align: center;
+}
+
+/* Product Image */
+.product-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Product Name */
+.product-name {
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Responsive Styling */
+@media (max-width: 1024px) {
+    /* Reduce product box size to fit more items */
+    .product-box {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    /* Stack product boxes vertically */
+    .product-box {
+        width: 100%;
+    }
+
+    /* Adjust header font size */
+    .main-container h2 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjust padding and font size for small screens */
+    .product-box {
+        padding: 15px;
+    }
+
+    .product-name {
+        font-size: 14px;
+    }
+
+    .main-container h2 {
+        font-size: 18px;
+    }
+}
+
+</style>

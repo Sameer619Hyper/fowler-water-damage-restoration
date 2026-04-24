@@ -1,0 +1,114 @@
+<div class="main-container">
+    <h2 class="unique-heading">{{ .Params.post_title }} Team Members</h2>
+    <div class="unique-team-grid">
+        {{ $currentTeam := "" }}
+        <!-- Extract the current player's team -->
+        {{ with .Params.player_specs }}
+            {{ range . }}
+                {{ $attributes := index . "player_attributes" }}
+                {{ range $attributes }}
+                    {{ if eq .attribute_name "Player Team" }}
+                        {{ $currentTeam = .attribute_value }}
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+
+        <!-- Ensure $currentTeam is not empty -->
+        {{ if $currentTeam }}
+            <!-- Loop through all players in the "players" section and limit to 15 -->
+            {{ $matchingPlayers := slice }}
+            {{ range where .Site.RegularPages "Section" "players" }}
+                {{ $playerTeam := "" }}
+                {{ with .Params }}
+                    {{ with .player_specs }}
+                        {{ range . }}
+                            {{ $attributes := index . "player_attributes" }}
+                            {{ range $attributes }}
+                                {{ if eq .attribute_name "Player Team" }}
+                                    {{ $playerTeam = .attribute_value }}
+                                {{ end }}
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+                <!-- Collect players with matching teams -->
+                {{ if eq $playerTeam $currentTeam }}
+                    {{ $matchingPlayers = $matchingPlayers | append . }}
+                {{ end }}
+            {{ end }}
+
+            <!-- Display up to 15 players -->
+            {{ range first 15 $matchingPlayers }}
+                <div class="unique-player-card">
+                    <a href="{{ .Permalink }}" class="unique-player-link">
+                        {{ if .Params.player_image }}
+                            <img src="{{ .Params.player_image }}" alt="{{ .Params.player_name }} Image" class="unique-player-image" loading="lazy">
+                        {{ end }}
+                        <p class="unique-player-name">{{ .Params.player_name }}</p>
+                    </a>
+                </div>
+            {{ end }}
+        {{ else }}
+            <p class="unique-no-team">No team assigned to this player.</p>
+        {{ end }}
+    </div>
+</div>
+
+<style>
+    /* Main container for the team section */
+
+/* Team grid layout */
+.unique-team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+/* Individual player card */
+.unique-player-card {
+    text-align: center;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #ffffff; /* Optional: background color */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.unique-player-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Player image */
+.unique-player-image {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Player name */
+.unique-player-name {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #333333;
+}
+
+/* Player link styling */
+.unique-player-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* No team message */
+.unique-no-team {
+    text-align: center;
+    font-size: 1rem;
+    color: #666666;
+    margin-top: 20px;
+}
+
+</style>

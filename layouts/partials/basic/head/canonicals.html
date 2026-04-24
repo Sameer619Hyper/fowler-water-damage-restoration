@@ -1,0 +1,23 @@
+{{ if eq .Section "services" -}}
+<link rel="canonical" href="{{ .Permalink | safeURL }}">
+{{- end }}
+
+{{ if .IsHome -}}
+    <link rel="canonical" href="{{ .Permalink | safeURL }}">
+{{- end }}
+
+{{ if eq .Section "pages" -}}
+    <link rel="canonical" href="{{ .Permalink | safeURL }}">
+{{- end }}
+
+{{ if eq .Section "service-area" -}}
+    <link rel="canonical" href="{{ .Permalink | safeURL }}">
+{{- end }}
+
+{{ if eq .Section "blogs" -}}
+    <link rel="canonical" href="{{ .Permalink | safeURL }}">
+{{- end }}
+
+{{ if eq .Section "gallery" -}}
+    <link rel="canonical" href="{{ .Permalink | safeURL }}">
+{{- end }}

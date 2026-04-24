@@ -1,0 +1,44 @@
+logo:
+  text: Water Damage Restoration
+  highlight: " Fresno"
+  url: /
+
+nav_links:
+  - label: Home
+    url: /
+    has_dropdown: false
+
+  - label: Blogs
+    url: /blogs/
+    has_dropdown: false
+
+  - label: Services
+    url: "#"
+    has_dropdown: true
+    dropdown_links:
+      - label: Emergency Water Remediation
+        url: /emergency-water-remediation/
+      - label: Flood Restoration
+        url: /flood-restoration/
+      - label: Storm Damage Restoration
+        url: /storm-damage-restoration/
+      - label: Mold Remediation
+        url: /mold-remediation/
+      - label: Sewage Cleanup
+        url: /sewage-cleanup/
+      - label: Water Damage Repair
+        url: /water-damage-repair/
+      - label: Structural Drying
+        url: /structural-drying/
+
+  - label: Service Area
+    url: /service-area/
+    has_dropdown: false
+
+  - label: About Us
+    url: /about-us/
+    has_dropdown: false
+
+  - label: Contact
+    url: "/contact-us/"
+    has_dropdown: false

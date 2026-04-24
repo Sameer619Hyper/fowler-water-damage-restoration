@@ -1,0 +1,84 @@
+<div class="main-container">
+    <h1>Players Listing</h1>
+</div>
+
+<div class="main-container">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        {{ $paginator := .Paginate (where .Site.RegularPages "Section" "players") }}
+        {{ range $paginator.Pages }}
+        <a href="{{ .RelPermalink }}" style="text-decoration: none; color: inherit; display: block; width: calc(33.33% - 10px);">
+            <div style="display: flex; flex-direction: column; border: 1px solid #ddd; border-radius: 5px; overflow: hidden; background-color: #f9f9f9;">
+                <!-- Player Avatar -->
+                <div style="width: 100%; overflow: hidden; display: flex; align-items: center; justify-content: center; background-color: #fff;">
+                    {{ if .Params.player_image }}
+                    <img src="{{ .Params.player_image }}" alt="{{ .Params.player_name }}" width="500" style="max-width: 100%; max-height: 100%; object-fit: cover;" loading="lazy">
+                    {{ else }}
+                    <img src="/images/default-avatar.webp" alt="Default Avatar" style="max-width: 100%; max-height: 100%; object-fit: cover;" loading="lazy">
+                    {{ end }}
+                </div>
+                <!-- Player Info -->
+                <div style="padding: 10px;">
+                    <h3 style="margin: 0; font-size: 1.2rem;">{{ .Params.player_name }}</h3>
+                    <div style="font-size: 14px; color: #8f8f8f; margin: 5px 0;">
+                        {{ with .Params.player_shortdescription }}
+                        <p>{{ . }}</p>
+                        {{ else }}
+                        <p>No bio available for this player.</p>
+                        {{ end }}
+                    </div>
+                    <div style="display: flex; font-size: 14px; justify-content: space-between; align-items: center; margin: 5px 0;">
+                        <!-- Games Played -->
+                        <span>
+                            <i class="fas fa-gamepad" style="margin-right: 5px;"></i>
+                            {{ $gameCount := 0 }}
+                            {{ with .Params.games }}
+                                {{ range . }}
+                                    {{ $gameCount = add $gameCount 1 }}
+                                {{ end }}
+                            {{ end }}
+                            {{ $gameCount }} Games
+                        </span>
+                        <!-- Teams Joined -->
+                        <span>
+                            <i class="fas fa-users" style="margin-right: 5px;"></i>
+                            {{ range .Params.player_specs }}
+                                {{ range .player_attributes }}
+                                    {{ if eq .attribute_name "Player Team" }}
+                                        {{ .attribute_value }}
+                                    {{ end }}
+                                {{ end }}
+                            {{ else }}
+                                Not Available
+                            {{ end }}
+                        </span>                        
+                    </div>
+                </div>
+            </div>
+        </a>
+        {{ end }}
+    </div>
+</div>
+
+<!-- Pagination Links -->
+<div class="pagination" style="margin-top: 20px; text-align: center;">
+    {{ if $paginator.HasPrev }}
+    <a href="{{ $paginator.Prev.URL }}" style="margin-right: 10px; text-decoration: none; padding: 10px 20px; background: #000; color: #fff; border-radius: 10px;">&laquo; Previous</a>
+    {{ end }}
+    
+    {{ $currentPage := $paginator.PageNumber }}
+    {{ $totalPages := $paginator.TotalPages }}
+    
+    {{ $start := cond (gt $currentPage 3) (sub $currentPage 2) 1 }}
+    {{ $end := cond (lt (add $start 6) $totalPages) (add $start 6) $totalPages }}
+    
+    {{ range seq $start $end }}
+    <a href="{{ (index $paginator.Pagers (sub . 1)).URL }}" 
+       style="margin-right: 10px; text-decoration: none; padding: 10px 20px; background: #000; color: #fff; border-radius: 10px;">
+        {{ . }}
+    </a>
+    {{ end }}
+    
+    {{ if $paginator.HasNext }}
+    <a href="{{ $paginator.Next.URL }}" style="margin-right: 10px; text-decoration: none; padding: 10px 20px; background: #000; color: #fff; border-radius: 10px;">Next &raquo;</a>
+    {{ end }}
+</div>

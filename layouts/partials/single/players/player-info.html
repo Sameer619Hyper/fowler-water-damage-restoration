@@ -1,0 +1,159 @@
+<div class="main-container">
+    <div class="player-info-container">
+        <!-- Game Image Section -->
+        <div class="player-image">
+            {{ with .Params.player_image }}
+            <img src="{{ . }}" alt="{{ $.Params.player_name }} profile picture" width="200" height="200">
+            {{ else }}
+            <img src="/images/default-game-image.webp" alt="Default Game Image" width="200" height="200">
+            {{ end }}
+        </div>
+        
+        <!-- Game Title, Description, and Social Icons Section -->
+        <div class="player-details">
+            <!-- Title -->
+            <h1 class="player-name">
+                {{- .Params.player_name -}}
+            </h1>
+
+            <!-- Description -->
+            <p id="description" class="player-description">
+                {{ $desc := split .Params.player_description " " }}
+                {{ if gt (len $desc) 20 }}
+                {{ range first 20 $desc }}{{ . }} {{ end }}...
+                {{ else }}
+                {{ .Params.player_description }}
+                {{ end }}
+            </p>
+            <p id="full-description" class="player-description-full">
+                {{ .Params.player_description }}
+            </p>
+            <a href="javascript:void(0)" id="toggle-button" class="toggle-button" onclick="toggleDescription()">
+                Show More
+            </a>
+
+            <!-- Social Media Profiles -->
+            <div class="social-icons">
+                {{ with .Params.facebook }}
+                <a href="{{ . }}" target="_blank" class="social-icon facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                {{ end }}
+                {{ with .Params.youtube }}
+                <a href="{{ . }}" target="_blank" class="social-icon youtube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                {{ end }}
+                {{ with .Params.instagram }}
+                <a href="{{ . }}" target="_blank" class="social-icon instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                {{ end }}
+                {{ with .Params.twitter }}
+                <a href="{{ . }}" target="_blank" class="social-icon twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                {{ end }}
+                {{ with .Params.twitch }}
+                <a href="{{ . }}" target="_blank" class="social-icon twitch">
+                    <i class="fab fa-twitch"></i>
+                </a>
+                {{ end }}
+                {{ with .Params.discord }}
+                <a href="{{ . }}" target="_blank" class="social-icon discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+                {{ end }}
+                {{ with .Params.steam }}
+                <a href="{{ . }}" target="_blank" class="social-icon steam">
+                    <i class="fab fa-steam"></i>
+                </a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+
+.player-info-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.player-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+    max-width: 200px;
+}
+
+.player-details {
+    flex: 1;
+}
+
+.player-name {
+    margin: 0;
+    color: #000;
+    font-size: 40px;
+}
+
+.player-description {
+    margin-top: 10px;
+    color: #555;
+    font-size: 16px;
+}
+
+.player-description-full {
+    display: none;
+    margin-top: 10px;
+    color: #555;
+    font-size: 16px;
+}
+
+.toggle-button {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 5px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.social-icons {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.facebook { color: #4267B2; }
+.youtube { color: #FF0000; }
+.instagram { color: #E1306C; }
+.twitter { color: #1DA1F2; }
+.twitch { color: #9146FF; }
+.discord { color: #5865F2; }
+.steam { color: #171A21; }
+
+@media (max-width: 768px) {
+    .main-container {
+        text-align: center; /* Center align all text on mobile */
+    }
+
+    .player-info-container {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items */
+    }
+
+    .social-icons {
+        justify-content: center; /* Center social icons */
+    }
+}
+
+</style>

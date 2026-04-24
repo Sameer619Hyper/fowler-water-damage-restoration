@@ -1,0 +1,118 @@
+{{ define "main" }}
+
+
+<main>
+    <div class="post-hero">
+        <div class="container">
+            {{ with .Params.category }}
+            <div class="post-category">{{ . }}</div>
+            {{ end }}
+
+            <h1>{{ .Title }}</h1>
+
+            <div class="post-meta">
+                <i class="fas fa-calendar-alt"></i> {{ .Date.Format "January 2, 2006" }}
+
+                {{ with .Params.author }}
+                <span>•</span>
+                <i class="fas fa-user"></i> By {{ . }}
+                {{ end }}
+
+                {{ with .Params.read_time }}
+                <span>•</span>
+                <i class="fas fa-clock"></i> {{ . }}
+                {{ end }}
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div class="container post-content">
+            {{ with .Params.featured_image }}
+            <img class="featured-image" src="{{ .src }}" alt="{{ .alt | default $.Title }}">
+            {{ end }}
+
+            <div class="post-body">
+                {{ .Content }}
+            </div>
+
+            {{ with .Params.quote }}
+            <blockquote class="custom-quote">
+                {{ .text }}{{ with .author }} – {{ . }}{{ end }}
+            </blockquote>
+            {{ end }}
+
+            {{ if .Params.show_share | default true }}
+            {{ $title := .Title }}
+            {{ $url := .Permalink }}
+            <div class="share-buttons">
+                <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ $url }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook-f"></i> Share
+                </a>
+                <a class="share-btn" href="https://twitter.com/intent/tweet?text={{ $title }}&url={{ $url }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-twitter"></i> Tweet
+                </a>
+                <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url={{ $url }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in"></i> Share
+                </a>
+                <a class="share-btn" href="mailto:?subject={{ $title }}&body={{ $url }}">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+            </div>
+            {{ end }}
+        </div>
+    </section>
+
+    {{ if .Params.show_related | default true }}
+    {{ $related := first 3 (where (where .Site.RegularPages "Section" .Section) "Permalink" "!=" .Permalink) }}
+    {{ if gt (len $related) 0 }}
+    <section class="bg-light">
+        <div class="container">
+            <h2 class="section-title">More <span>articles</span> you might like</h2>
+            <div class="recent-grid">
+                {{ range $related }}
+                <div class="recent-card">
+                    {{ with .Params.featured_image }}
+                    <img class="recent-image" src="{{ .src }}" alt="{{ .alt | default $.Title }}">
+                    {{ end }}
+
+                    <div class="recent-content">
+                        <div class="recent-date">{{ .Date.Format "January 2, 2006" }}</div>
+                        <h4 class="recent-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+                        <a href="{{ .RelPermalink }}" class="read-more">Read more →</a>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+    {{ end }}
+    {{ end }}
+</main>
+
+<script>
+    const hamburger = document.getElementById('hamburgerBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === "#" || targetId === "") return;
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (navLinks && navLinks.classList.contains('show')) {
+                    navLinks.classList.remove('show');
+                }
+            }
+        });
+    });
+</script>
+{{ end }}

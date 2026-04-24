@@ -1,0 +1,20 @@
+[build]
+  publish = "public"
+  command = "hugo"
+
+[context.production.environment]
+  [build.environment]
+  HUGO_VERSION = "0.120.0" # or your version
+  HUGO_ENV = "production"
+
+[[redirects]]
+  from = "/pages"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/"
+  to = "/"
+  status = 301
+  force = true

@@ -1,0 +1,68 @@
+schema_type: LocalBusiness
+business_name: Water Damage Restoration Fresno
+legal_name: Water Damage Restoration Fresno
+description: Fast & reliable water damage restoration in Fresno, CA. Our experts
+  provide 24/7 emergency water extraction, drying, and repair. Licensed, bonded,
+  and ready to help. Call now!
+url: https://waterdamagerestorationfresno.net/
+main_entity_of_page: https://waterdamagerestorationfresno.net/
+telephone: +1-555-910-9730
+telephone_secondary: +1-555-910-9730
+email: hello@waterdamagerestorationfresno.net
+price_range: $$
+slogan: Fast, clean, reliable service.
+founding_date: 2018-01-01
+logo: /uploads/logo.png
+image: /uploads/business-front.jpg
+images:
+  - image: /uploads/truck.jpg
+  - image: /uploads/team.jpg
+ids:
+  has_map: https://maps.google.com/?q=your-business
+  google_place_id: ""
+  tax_id: ""
+address:
+  street_address: 123 Main Street
+  address_locality: Dallas
+  address_region: TX
+  postal_code: "75201"
+  address_country: US
+geo:
+  latitude: "32.7767"
+  longitude: "-96.7970"
+opening_hours:
+  - day: Monday
+    opens: 08:00
+    closes: 18:00
+    closed: false
+  - day: Tuesday
+    opens: 08:00
+    closes: 18:00
+    closed: false
+service_areas:
+  - name: Dallas
+  - name: Plano
+services:
+  - name: Water Heater Repair
+    url: https://example.com/services/water-heater-repair/
+  - name: Drain Cleaning
+    url: https://example.com/services/drain-cleaning/
+same_as:
+  - profile: https://www.facebook.com/yourbusiness
+  - profile: https://www.instagram.com/yourbusiness
+payment_accepted:
+  - method: Cash
+  - method: Visa
+currencies_accepted:
+  - currency: USD
+contact_point:
+  contact_type: customer service
+  telephone: +1-555-123-4567
+  email: hello@example.com
+  area_served: US
+  available_language:
+    - language: English
+extra:
+  has_storefront: true
+  rating_value: 4.9
+  review_count: 187

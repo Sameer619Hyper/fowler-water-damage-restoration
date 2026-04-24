@@ -1,0 +1,345 @@
+{{ define "main" }}
+
+<main>
+    {{ with .Params.hero }}
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    {{ with .badge }}
+                    <div class="hero-badge">
+                        {{ with .icon }}<i class="{{ . }}"></i>{{ end }} {{ .text }}
+                    </div>
+                    {{ end }}
+
+                    <h1>{{ .title | safeHTML }}</h1>
+                    <p>{{ .description }}</p>
+
+                    <div class="hero-buttons">
+                        {{ with .primary_button }}
+                        <a href="{{ .url | safeURL }}" class="btn-primary">
+                            {{ .text }} {{ with .icon }}<i class="{{ . }}"></i>{{ end }}
+                        </a>
+                        {{ end }}
+
+                        {{ with .secondary_button }}
+                        <a href="{{ .url }}" class="btn-outline">{{ .text }}</a>
+                        {{ end }}
+                    </div>
+                </div>
+
+                {{ with .image }}
+                <div class="hero-image">
+                    <img src="{{ .src }}" alt="{{ .alt }}">
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.story }}
+    <section id="story" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">{{ .title }} <span>{{ .highlight }}</span></h2>
+            <div class="story-text rich-text">
+                {{ range .paragraphs }}
+                <p>{{ . | markdownify }}</p>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.why_choose_us }}
+    <section id="why">
+        <div class="container">
+            <h2 class="section-title">{{ .title }} <span>{{ .highlight }}</span></h2>
+            <div class="features-grid">
+                {{ range .items }}
+                <div class="feature-card">
+                    <div class="icon-circle">{{ with .icon }}<i class="{{ . }}"></i>{{ end }}</div>
+                    <h3>{{ .title }}</h3>
+                    <p>{{ .description | markdownify }}</p>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.services }}
+    <section id="services" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">{{ .title }} <span>{{ .highlight }}</span></h2>
+
+            <div class="services-grid">
+                {{ range .items }}
+                {{ $service := . }}
+                <div class="service-card">
+                    <div class="service-icon">{{ with $service.icon }}<i class="{{ . }}"></i>{{ end }}</div>
+
+                    {{ with $service.url }}
+                    <h3>
+                        <a href="{{ . | relURL }}" class="service-title-link">
+                            {{ $service.title }}
+                        </a>
+                    </h3>
+                    {{ else }}
+                    <h3>{{ $service.title }}</h3>
+                    {{ end }}
+
+                    <p>{{ $service.description | markdownify }}</p>
+                </div>
+                {{ end }}
+            </div>
+
+            {{ with .bottom_text }}
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="max-width: 700px; margin: 0 auto;">{{ . | markdownify }}</p>
+            </div>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.process }}
+    <section id="process">
+        <div class="container">
+            <h2 class="section-title">{{ .title }} <span>{{ .highlight }}</span></h2>
+
+            <div class="process-grid">
+                {{ range $index, $item := .steps }}
+                <div class="process-card">
+                    <div class="step-number">{{ add $index 1 }}</div>
+                    <h3>{{ $item.title }}</h3>
+                    <p>{{ $item.description | markdownify }}</p>
+                </div>
+                {{ end }}
+            </div>
+
+            {{ with .bottom_text }}
+            <div style="text-align: center; margin-top: 40px;">
+                <p>{{ . | markdownify }}</p>
+            </div>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.testimonials }}
+    <section class="bg-light">
+        <div class="container">
+            <h2 class="section-title">{{ .title }} <span>{{ .highlight }}</span></h2>
+            <div class="testimonials-grid">
+                {{ range .items }}
+                <div class="testimonial-card">
+                    {{ $stars := .stars | default 5 }}
+                    {{ range seq $stars }}
+                    <i class="fas fa-star"></i>
+                    {{ end }}
+                    <p>"{{ .quote }}"</p>
+                    <h4>- {{ .name }}</h4>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.service_area }}
+    <section id="area">
+        <style>
+            .city-link {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .city-link:hover {
+                color: var(--primary);
+                text-decoration: none;
+            }
+
+            .homepage-city-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 20px;
+                margin-top: 32px;
+                margin-bottom: 32px;
+            }
+
+            .homepage-city-card {
+                background: #fff;
+                border-radius: 20px;
+                padding: 24px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+                text-align: center;
+            }
+
+            .homepage-city-card .city-icon {
+                font-size: 28px;
+                color: var(--primary);
+                margin-bottom: 14px;
+            }
+
+            .homepage-city-card h3 {
+                margin: 0;
+                font-size: 1.1rem;
+            }
+
+            .service-title-link {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .service-title-link:hover {
+                color: var(--primary);
+                text-decoration: none;
+            }
+        </style>
+
+        <div class="container">
+            <h2 class="section-title">{{ .title }} <span>{{ .highlight }}</span></h2>
+            <div style="text-align: center; max-width: 1000px; margin: 0 auto;">
+                <p style="margin-bottom: 28px;">{{ .description }}</p>
+
+                {{ $cities := where site.RegularPages "Section" "services" }}
+                {{ $cities = where $cities "Params.service_type" "water-damage-restoration" }}
+
+                {{ if gt (len $cities) 0 }}
+                    <div class="homepage-city-grid">
+                        {{ range sort $cities "Params.city_name" }}
+                            <div class="homepage-city-card">
+                                <div class="city-icon"><i class="fas fa-city"></i></div>
+                                <h3>
+                                    <a href="{{ .Params.url | relURL }}" class="city-link">
+                                        {{ .Params.city_name }}
+                                    </a>
+                                </h3>
+                            </div>
+                        {{ end }}
+                    </div>
+                {{ else }}
+                    <p>No cities found for this service type.</p>
+                {{ end }}
+
+                {{ with .map_embed_url }}
+                {{ $mapEmbed := printf "%v" . }}
+                <div class="map-container">
+                    {{ if in (lower $mapEmbed) "<iframe" }}
+                    {{ $mapEmbed | safeHTML }}
+                    {{ else }}
+                    <iframe
+                        src="{{ $mapEmbed }}"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                    {{ end }}
+                </div>
+                {{ end }}
+
+                <div class="area-links">
+                    {{ with .directions_link }}
+                    <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+                        {{ with .icon }}<i class="{{ . }}"></i>{{ end }} {{ .text }}
+                    </a>
+                    {{ end }}
+
+                    {{ with .full_map_link }}
+                    <a href="{{ .url }}" {{ if strings.HasPrefix .url "#" }}id="viewFullMapLinkHome"{{ else }}target="_blank" rel="noopener noreferrer"{{ end }}>
+                        {{ with .icon }}<i class="{{ . }}"></i>{{ end }} {{ .text }}
+                    </a>
+                    {{ end }}
+                </div>
+
+                {{ with .notice }}
+                <div style="margin-top: 32px; background: #eef2ff; border-radius: 36px; padding: 24px; font-weight: 500;">
+                    {{ with .icon }}<i class="{{ . }}" style="color:var(--primary); margin-right: 12px;"></i>{{ end }}{{ .text }}
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.faq }}
+    <section class="bg-light">
+        <div class="container">
+            <h2 class="section-title">{{ .title }} <span>{{ .highlight }}</span></h2>
+            <div style="max-width: 800px; margin: 0 auto;" id="faq">
+                {{ range .items }}
+                <div class="faq-item">
+                    <div class="faq-question">{{ .question }} <i class="fas fa-plus"></i></div>
+                    <div class="faq-answer">{{ .answer }}</div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.contact }}
+    <section id="contact">
+        <div class="container">
+            <div class="contact-card">
+                <h2 style="font-size: 1.9rem; font-weight: 800; margin-bottom: 12px; text-align: center;">{{ .title }}</h2>
+                <p style="text-align: center; margin-bottom: 32px; color: #475569;">{{ .description }}</p>
+
+                <iframe src="//leads.leadsmartinc.com/?api_key=eccf565586cda416df8b89f66df641fee9a1bcb8&affiliate_source=smramr1&funnel=3&category=206&step=1&buttons=btn-success" width="100%" height="450" frameborder="0"></iframe>
+            </div>
+        </div>
+    </section>
+    {{ end }}
+</main>
+
+<script>
+    // FAQ accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const questionDiv = item.querySelector('.faq-question');
+        questionDiv.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            faqItems.forEach(i => i.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
+        });
+    });
+
+    // Contact form fallback if no backend is connected
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm && !contactForm.getAttribute('action')) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            if (!name) {
+                alert("Please enter your name.");
+                return;
+            }
+            alert(`Thanks ${name}! Your message has been sent. We'll get back to you shortly.`);
+            contactForm.reset();
+        });
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === "#" || targetId === "") return;
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Optional demo link behavior
+    const fullMapLink = document.getElementById('viewFullMapLinkHome');
+    if (fullMapLink && fullMapLink.getAttribute('href') === "#") {
+        fullMapLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert("Add a real service area map URL in _index.md to replace this demo action.");
+        });
+    }
+</script>
+{{ end }}

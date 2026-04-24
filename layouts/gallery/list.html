@@ -1,0 +1,114 @@
+{{ define "main" }}
+
+{{ $heroTitle := .Params.hero_title | default "Our" }}
+{{ $heroHighlight := .Params.hero_highlight | default "Work" }}
+{{ $heroDescription := .Params.hero_description | default "Browse through our completed projects." }}
+{{ $gallery := .Params.gallery | default (slice) }}
+
+<main>
+    <div class="gallery-hero">
+        <div class="container">
+            <h1>{{ $heroTitle }} <span style="color:var(--primary);;">{{ $heroHighlight }}</span></h1>
+            <p>{{ $heroDescription }}</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="gallery-grid" id="galleryGrid">
+                {{ range $index, $item := $gallery }}
+                    <div class="gallery-item" data-index="{{ $index }}">
+                        <img
+                            class="gallery-img"
+                            src="{{ $item.image }}"
+                            alt="{{ $item.title }}"
+                            loading="lazy"
+                        >
+                        <div class="gallery-info">
+                            <div class="gallery-title">{{ $item.title }}</div>
+                            <div class="gallery-category">
+                                {{ $item.category | title }}
+                            </div>
+                        </div>
+                    </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+        <img id="lightboxImg" class="lightbox-img" src="" alt="">
+        <button class="lightbox-close" id="closeLightbox">&times;</button>
+        <button class="lightbox-prev" id="prevBtn">&#10094;</button>
+        <button class="lightbox-next" id="nextBtn">&#10095;</button>
+        <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+</div>
+
+<script>
+    const galleryData = {{ $gallery | jsonify | safeJS }};
+    let currentLightboxIndex = 0;
+
+    function openLightbox(index) {
+        const item = galleryData[index];
+        if (!item) return;
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const caption = document.getElementById('lightboxCaption');
+
+        lightboxImg.src = item.image;
+        lightboxImg.alt = item.title || '';
+        caption.textContent = item.title || '';
+        currentLightboxIndex = index;
+        lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+    }
+
+    function showNext() {
+        if (currentLightboxIndex + 1 < galleryData.length) {
+            openLightbox(currentLightboxIndex + 1);
+        }
+    }
+
+    function showPrev() {
+        if (currentLightboxIndex - 1 >= 0) {
+            openLightbox(currentLightboxIndex - 1);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.gallery-item').forEach((item) => {
+            item.addEventListener('click', () => {
+                openLightbox(Number(item.dataset.index));
+            });
+        });
+
+        document.getElementById('closeLightbox').addEventListener('click', closeLightbox);
+        document.getElementById('prevBtn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            showPrev();
+        });
+        document.getElementById('nextBtn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            showNext();
+        });
+
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'ArrowLeft') showPrev();
+            if (e.key === 'ArrowRight') showNext();
+            if (e.key === 'Escape') closeLightbox();
+        });
+    });
+</script>
+{{ end }}

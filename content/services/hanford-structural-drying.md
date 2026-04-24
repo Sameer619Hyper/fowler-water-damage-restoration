@@ -1,0 +1,146 @@
+---
+title: "Structural Drying in Hanford, CA | Water Damage Restoration Fresno"
+slug: "/structural-drying/hanford-ca/"
+zipcode: "93230"
+url: "/structural-drying/hanford-ca/"
+city_name: Hanford, CA
+service_type: "structural-drying"
+description: "Fast, expert structural drying in Hanford, CA. Water Damage Restoration Fresno restores homes and businesses after leaks, floods, or storms with industrial drying, moisture mapping and insurance-ready documentation."
+hero_badge: "24/7 Emergency Structural Drying"
+hero_title: "Rapid Structural Drying Services for Hanford Homes & Businesses"
+hero_description: "When water compromises framing, flooring, or drywall in Hanford's hot, dry Central Valley climate, fast structural drying prevents mold, rot, and costly repairs. Our certified technicians use thermal imaging, industrial dehumidifiers, and targeted cavity drying to restore structural integrity quickly and thoroughly."
+hero_button:
+  text: "Call Now (559) 910-9730"
+  url: "tel:+15599109730"
+hero_image:
+  src: "/uploads/water-damage-restoration.jpg"
+  alt: "Technician setting up structural drying equipment in a home"
+
+intro:
+  title: "Why Structural Drying Matters in Hanford"
+  paragraphs:
+    - "Hanford's seasonal storms and occasional irrigation runoff can saturate foundations and wall cavities. Rapid structural drying reduces swelling, shrinkage and secondary damage to framing, flooring and insulation. Our technicians prioritize containment, moisture mapping, and [controlled drying](https://waterdamagerestorationfresno.net/) to protect your property and peace of mind."
+    - "We tailor drying strategies to local building types-ranch-style homes, older downtown structures, and agricultural facilities around Kings County. Using negative pressure systems, heat-assisted drying and targeted air movers, we remove hidden moisture from under slabs, inside walls, and within crawlspaces to prevent long-term damage."
+    - "Water Damage Restoration Fresno documents moisture readings and progress for insurance claims and contractor coordination. Whether emergency extraction in downtown Hanford or scheduled cavity drying in nearby Lemoore, our local teams move quickly, communicate clearly, and finish with verified dryness and sanitation."
+
+features:
+  title: "Our Structural Drying Capabilities"
+  items:
+    - icon: "thermography"
+      title: "Thermal Imaging & Moisture Mapping"
+      description: "Non-invasive thermal scans and moisture meters locate hidden water inside walls, floors, and ceilings for precise, efficient drying plans."
+    - icon: "industrial-fans"
+      title: "Industrial Air Movers & Dehumidifiers"
+      description: "High-CFM air movers paired with commercial dehumidifiers speed evaporation and lower humidity to protect wood, drywall, and finishes."
+    - icon: "cavity-drying"
+      title: "Cavity & Injection Drying"
+      description: "Targeted injection drying for wall cavities and assemblies prevents demolition while restoring structural components and insulation safely."
+    - icon: "documentation"
+      title: "Insurance Documentation & Claims Support"
+      description: "Detailed moisture logs, before/after photos and drying reports help homeowners and adjusters move claims forward with confidence."
+  bottom_text: "Our crews combine industry-standard equipment, certified techniques, and local knowledge of Hanford building practices to deliver measured, verifiable drying. We coordinate with insurers and contractors to minimize downtime and scope accurate repairs after verified dry standards are met."
+
+solutions:
+  title: "Common Structural Drying Solutions"
+  items:
+    - icon: "flood"
+      title: "Post-Flood Structural Drying"
+      description: "Full structural drying for homes and businesses affected by flash floods or overflow from nearby irrigation canals and storm events."
+    - icon: "leak"
+      title: "Leak-Related Cavity Drying"
+      description: "Precise drying for burst pipes, roof leaks, and appliance overflows that have saturated framing or wall cavities."
+    - icon: "crawlspace"
+      title: "Crawlspace & Subfloor Drying"
+      description: "Encapsulation, moisture removal, and controlled airflow to dry subfloors and crawlspaces and prevent mold growth."
+    - icon: "fa-commercial"
+      title: "Commercial Property Drying"
+      description: "Fast-response drying for retail, warehouses, and municipal buildings throughout Hanford and Kings County to reduce business interruption."
+    - icon: "mold-prevention"
+      title: "Mold Prevention & Antimicrobial Treatment"
+      description: "Drying paired with EPA-registered antimicrobial treatments to inhibit mold on high-risk surfaces following water intrusion."
+    - icon: "fa-slab"
+      title: "Concrete Slab & Foundation Drying"
+      description: "Specialized approaches for slab-on-grade and foundation moisture using structural drying mats and desiccant strategies when needed."
+  bottom_text: "We assess structures quickly, design drying systems around building materials and local climate, and adapt as moisture readings change to ensure complete, documented restoration across Hanford and neighboring communities."
+
+guarantees:
+  title: "Our Service Commitments"
+  items:
+    - icon: "fa-response"
+      title: "Fast Local Response"
+      description: "Licensed crews in Hanford respond swiftly to emergencies-minimizing exposure time and secondary damage."
+    - icon: "certified"
+      title: "Certified Technicians"
+      description: "Trained structural drying technicians use industry best practices for safe, effective drying and moisture control."
+    - icon: "transparent"
+      title: "Transparent Pricing"
+      description: "Upfront estimates, no hidden fees, and itemized documentation for insurance and repair planning."
+    - icon: "fa-satisfaction"
+      title: "Verified Dryness & Satisfaction"
+      description: "We provide final moisture reports and stand behind our work until your property meets industry dry standards."
+  bottom_text: "Water Damage Restoration Fresno guarantees clear communication, proven drying protocols, and final moisture verification. Our local teams treat Hanford homes and businesses like our own, delivering measurable results and reliable follow-up."
+
+process:
+  title: "How Our Structural Drying Process Works"
+  steps:
+    - title: "1. Emergency Response & Inspection"
+      description: "We assess water source, structure type, and damage extent, then contain contamination and plan drying."
+    - title: "2. Extraction & Demolition (If Needed)"
+      description: "Remove standing water and perform minimal demolition to access wet assemblies and reduce drying times."
+    - title: "3. Targeted Drying System Setup"
+      description: "Install air movers, dehumidifiers, heat and injection systems configured to Hanford's humidity and building specifics."
+    - title: "4. Monitoring, Documentation & Handover"
+      description: "Track moisture until accepted dryness levels are reached, provide full documentation, and coordinate repairs."
+  bottom_text: "Our process emphasizes speed, accurate moisture control, and thorough documentation for homeowners, property managers, and insurance adjusters in Hanford, ensuring reliable outcomes and fast recovery."
+
+testimonials:
+  title: "What Neighbors in Hanford Say"
+  items:
+    - quote: "Fast, professional, and communicative-Water Damage Restoration Fresno dried our floors after a sewer backup and handled the insurance paperwork. Local crews really know Hanford building issues."
+      author: "M. Ramirez, Downtown Hanford"
+    - quote: "Their moisture mapping found hidden saturation in our crawlspace, and the team dried it without major demolition. Clear reports made claims easy."
+      author: "T. Nguyen, West Hanford"
+
+service_area:
+  title: "We Serve Hanford & Surrounding Communities"
+  description: "Local crews cover Hanford neighborhoods and nearby towns with fast response and proven structural drying techniques."
+  badges:
+    - "Downtown Hanford"
+    - "West Hanford"
+    - "South Hanford"
+    - "North Hanford"
+    - "Hanford Civic Center"
+    - "Stratford"
+    - "Lemoore"
+    - "Corcoran"
+    - "Armona"
+    - "Kings County"
+    - "Hanford Northwest"
+  map_embed_url: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51437.29553969664!2d-119.68713330119463!3d36.316405591201416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8094c37b19af7a53%3A0x1b16a7e4c563f490!2sHanford%2C%20CA%2093230!5e0!3m2!1sen!2sus!4v1775740643528!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
+  directions_url: "https://maps.app.goo.gl/eVCoafaRe7FzdN9Q6"
+  full_map_url: "https://maps.app.goo.gl/eVCoafaRe7FzdN9Q6"
+  notice: "We provide on-site assessments across Hanford and nearby Kings County ZIP codes; emergency teams may be dispatched from Fresno or Fresno depending on availability."
+
+faq:
+  title: "Frequently Asked Questions"
+  items:
+    - question: "How long does structural drying take?"
+      answer: "Drying typically takes 24 hours to several days depending on materials, humidity and extent; we monitor moisture until industry standards are met."
+    - question: "Will you work with my insurance company?"
+      answer: "Yes. We supply moisture reports, photos, and estimates designed to support timely claims and clear communication with adjusters."
+    - question: "Can drying prevent mold in Hanford's climate?"
+      answer: "Prompt, documented drying paired with sanitation significantly reduces mold risk in Hanford's warm Central Valley environment."
+    - question: "Do you need to remove walls and floors?"
+      answer: "We use targeted cavity drying to avoid unnecessary demolition when possible; invasive removal is only used when required for safety or effectiveness."
+    - question: "Are your technicians certified?"
+      answer: "Our team includes certified structural drying technicians who follow industry protocols and use calibrated equipment for reliable results."
+
+cta:
+  title: "Get Hanford Structural Drying Now"
+  description: "Don't wait-hidden moisture can escalate quickly in Kings County. Call Water Damage Restoration Fresno for immediate response, certified drying, and insurance-ready documentation."
+  button_text: "Call Now - (559) 910-9730"
+  name_placeholder: "Your Name"
+  phone_placeholder: "Phone Number"
+  email_placeholder: "Email Address"
+  footer_text: "Serving Hanford, Lemoore and Kings County. For faster service in some cases we coordinate with crews in Fresno; alternate contact (559) 910-9730 is available for scheduling."
+---

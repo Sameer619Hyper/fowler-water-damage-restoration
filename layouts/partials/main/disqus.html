@@ -1,0 +1,20 @@
+<div class="main-container">
+    <h3>Comments</h3>
+    <div id="disqus_thread"></div>
+    <button id="load-comments" onclick="loadDisqus()" style="padding: 10px; margin: 20px auto; display: block;">Leave a Comment</button>
+
+    <script>
+        let disqusLoaded = false;
+        function loadDisqus() {
+            if (!disqusLoaded) {
+                disqusLoaded = true;
+                const d = document, s = d.createElement('script');
+                s.src = 'https://game-settings.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            }
+            document.getElementById("load-comments").style.display = "none"; // Hide the button
+        }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>

@@ -1,0 +1,13 @@
+{{ define "main" }}
+    {{ if eq .Section "players" -}}
+        {{ partial "main/sections/players.html" .}}
+    {{ end }}
+
+    {{ if eq .Section "games" -}}
+        {{ partial "main/sections/games.html" .}}
+    {{ end }}
+
+    {{ if eq .Section "teams" -}}
+        {{ partial "main/sections/teams.html" .}}
+    {{ end }}
+{{ end }}

@@ -1,0 +1,29 @@
+{{ if eq .Section "services" -}}
+  {{ $words := slice "Best" "Expert" "Top-Rated" "Top" "Leading" "Trusted" "Professional" "Premier" "Reliable" "Certified" "Local" "Award-Winning" "Experienced" "#1" "Highly Rated" "Renowned" }}
+  {{ $word := index (shuffle $words) 0 }}
+  {{ $serviceType := .Params.service_type | humanize | title }}
+  <title>{{ $word }} {{ $serviceType }} {{ .Params.city_name }} | {{ .Params.zipcode }}</title>
+{{- end }}
+
+{{ if .IsHome -}}
+    <title>Water Damage Restoration Fresno | Available 24/7</title>
+    <meta name="google-site-verification" content="xs380WeSfymfj2GtnP7uqR-ejGHvfgNGQ7IlmcBg2iw" />
+{{- end }}
+
+{{ if eq .Section "pages" -}}
+    <title>{{ .Params.seo_title | default .Title }}</title>
+{{- end }}
+
+{{ if eq .Section "games" -}}
+    <title>{{ .Params.seo_title }}</title>
+{{- end }}
+
+{{ if eq .Section "blog" -}}
+    <title>{{ .Params.seo_title }}</title>
+{{- end }}
+
+{{ if eq .Section "tools" -}}
+    <title>{{ .Params.seo_title }}</title>
+{{- end }}
+
+<meta name="google-site-verification" content="hGaIOGrTjpf7eOD-OEB3jt7pzcGNfth7HMNlkG1E-qo" />

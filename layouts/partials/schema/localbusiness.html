@@ -1,0 +1,140 @@
+{{ $s := site.Data.settings.localbusiness }}
+{{ if $s }}
+  {{ $schema := dict
+    "@context" "https://schema.org"
+    "@type" ($s.schema_type | default "LocalBusiness")
+    "name" $s.business_name
+  }}
+
+  {{ with $s.legal_name }}{{ $schema = merge $schema (dict "legalName" .) }}{{ end }}
+  {{ with $s.description }}{{ $schema = merge $schema (dict "description" .) }}{{ end }}
+  {{ with $s.url }}{{ $schema = merge $schema (dict "url" .) }}{{ end }}
+  {{ with $s.main_entity_of_page }}{{ $schema = merge $schema (dict "mainEntityOfPage" .) }}{{ end }}
+  {{ with $s.telephone }}{{ $schema = merge $schema (dict "telephone" .) }}{{ end }}
+  {{ with $s.email }}{{ $schema = merge $schema (dict "email" .) }}{{ end }}
+  {{ with $s.price_range }}{{ $schema = merge $schema (dict "priceRange" .) }}{{ end }}
+  {{ with $s.slogan }}{{ $schema = merge $schema (dict "slogan" .) }}{{ end }}
+  {{ with $s.founding_date }}{{ $schema = merge $schema (dict "foundingDate" .) }}{{ end }}
+  {{ with $s.logo }}{{ $schema = merge $schema (dict "logo" (. | absURL)) }}{{ end }}
+  {{ with $s.image }}{{ $schema = merge $schema (dict "image" (. | absURL)) }}{{ end }}
+  {{ with $s.ids.has_map }}{{ $schema = merge $schema (dict "hasMap" .) }}{{ end }}
+
+  {{ with $s.images }}
+    {{ $photos := slice }}
+    {{ range . }}
+      {{ $photos = $photos | append (.image | absURL) }}
+    {{ end }}
+    {{ if gt (len $photos) 0 }}
+      {{ $schema = merge $schema (dict "photo" $photos) }}
+    {{ end }}
+  {{ end }}
+
+  {{ with $s.address }}
+    {{ $address := dict "@type" "PostalAddress" }}
+    {{ with .street_address }}{{ $address = merge $address (dict "streetAddress" .) }}{{ end }}
+    {{ with .address_locality }}{{ $address = merge $address (dict "addressLocality" .) }}{{ end }}
+    {{ with .address_region }}{{ $address = merge $address (dict "addressRegion" .) }}{{ end }}
+    {{ with .postal_code }}{{ $address = merge $address (dict "postalCode" .) }}{{ end }}
+    {{ with .address_country }}{{ $address = merge $address (dict "addressCountry" .) }}{{ end }}
+    {{ $schema = merge $schema (dict "address" $address) }}
+  {{ end }}
+
+  {{ with $s.geo }}
+    {{ if and .latitude .longitude }}
+      {{ $geo := dict
+        "@type" "GeoCoordinates"
+        "latitude" .latitude
+        "longitude" .longitude
+      }}
+      {{ $schema = merge $schema (dict "geo" $geo) }}
+    {{ end }}
+  {{ end }}
+
+  {{ with $s.same_as }}
+    {{ $sameAs := slice }}
+    {{ range . }}
+      {{ $sameAs = $sameAs | append .profile }}
+    {{ end }}
+    {{ if gt (len $sameAs) 0 }}
+      {{ $schema = merge $schema (dict "sameAs" $sameAs) }}
+    {{ end }}
+  {{ end }}
+
+  {{ with $s.payment_accepted }}
+    {{ $payments := slice }}
+    {{ range . }}
+      {{ $payments = $payments | append .method }}
+    {{ end }}
+    {{ if gt (len $payments) 0 }}
+      {{ $schema = merge $schema (dict "paymentAccepted" $payments) }}
+    {{ end }}
+  {{ end }}
+
+  {{ with $s.currencies_accepted }}
+    {{ $currencies := slice }}
+    {{ range . }}
+      {{ $currencies = $currencies | append .currency }}
+    {{ end }}
+    {{ if gt (len $currencies) 0 }}
+      {{ $schema = merge $schema (dict "currenciesAccepted" $currencies) }}
+    {{ end }}
+  {{ end }}
+
+  {{ with $s.service_areas }}
+    {{ $areas := slice }}
+    {{ range . }}
+      {{ $areas = $areas | append (dict "@type" "City" "name" .name) }}
+    {{ end }}
+    {{ if gt (len $areas) 0 }}
+      {{ $schema = merge $schema (dict "areaServed" $areas) }}
+    {{ end }}
+  {{ end }}
+
+  {{ with $s.services }}
+    {{ $offers := slice }}
+    {{ range . }}
+      {{ $service := dict
+        "@type" "Service"
+        "name" .name
+      }}
+      {{ with .url }}{{ $service = merge $service (dict "url" .) }}{{ end }}
+      {{ $offers = $offers | append (dict
+        "@type" "Offer"
+        "itemOffered" $service
+      ) }}
+    {{ end }}
+    {{ if gt (len $offers) 0 }}
+      {{ $schema = merge $schema (dict "makesOffer" $offers) }}
+    {{ end }}
+  {{ end }}
+
+  {{ with $s.contact_point }}
+    {{ $cp := dict "@type" "ContactPoint" }}
+    {{ with .contact_type }}{{ $cp = merge $cp (dict "contactType" .) }}{{ end }}
+    {{ with .telephone }}{{ $cp = merge $cp (dict "telephone" .) }}{{ end }}
+    {{ with .email }}{{ $cp = merge $cp (dict "email" .) }}{{ end }}
+    {{ with .area_served }}{{ $cp = merge $cp (dict "areaServed" .) }}{{ end }}
+    {{ with .available_language }}
+      {{ $langs := slice }}
+      {{ range . }}
+        {{ $langs = $langs | append .language }}
+      {{ end }}
+      {{ if gt (len $langs) 0 }}
+        {{ $cp = merge $cp (dict "availableLanguage" $langs) }}
+      {{ end }}
+    {{ end }}
+    {{ $schema = merge $schema (dict "contactPoint" $cp) }}
+  {{ end }}
+
+  {{ with $s.extra }}
+    {{ if and .rating_value .review_count }}
+      {{ $schema = merge $schema (dict "aggregateRating" (dict
+        "@type" "AggregateRating"
+        "ratingValue" .rating_value
+        "reviewCount" .review_count
+      )) }}
+    {{ end }}
+  {{ end }}
+
+<script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>
+{{ end }}

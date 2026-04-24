@@ -1,0 +1,100 @@
+{{ define "main" }}
+
+    <!-- Hero -->
+    <div class="area-hero">
+        <div class="container">
+            <h1>Our <span style="color:var(--primary);;">Service Area</span></h1>
+            <p>We proudly serve homes and businesses across the metro and surrounding communities. Check if we're in your neighborhood.</p>
+        </div>
+    </div>
+
+    <!-- Map Section -->
+    <section>
+        <div class="container">
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102250.13224598068!2d-119.87485278114377!3d36.786958065310564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80945de1549e4e9d%3A0x7b12406449a3b811!2sFresno%2C%20CA!5e0!3m2!1sen!2sus!4v1775741407781!5m2!1sen!2sus" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <div style="text-align: center;">
+                <a href="https://maps.app.goo.gl/hf2ARjyykSU8dEMz6" target="_blank" rel="noopener noreferrer" class="btn-outline" style="margin-top: 10px;">
+                    <i class="fas fa-directions"></i> Get directions to our office
+                </a>
+            </div>
+        </div>
+    </section>
+
+<style>
+    .city-link {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .city-link:hover {
+        color: var(--primary);
+        text-decoration: none;
+    }
+</style>
+
+<!-- City List Section -->
+<section class="bg-light">
+    <div class="container">
+        <h2 class="section-title">Communities We <span>Serve</span></h2>
+
+        {{ $cities := where site.RegularPages "Section" "services" }}
+        {{ $cities = where $cities "Params.service_type" "water-damage-restoration" }}
+
+        {{ if gt (len $cities) 0 }}
+            <div class="city-grid">
+                {{ range sort $cities "Params.city_name" }}
+                    <div class="city-card">
+                        <div class="city-icon"><i class="fas fa-city"></i></div>
+                        <h3>
+                            <a href="{{ .Params.url | relURL }}" class="city-link">
+                                {{ .Params.city_name }}
+                            </a>
+                        </h3>
+                    </div>
+                {{ end }}
+            </div>
+        {{ else }}
+            <p>No cities found for this service type.</p>
+        {{ end }}
+
+        <div class="callout">
+            <i class="fas fa-truck-fast" style="font-size: 2rem;color: var(--primary); margin-bottom: 16px; display: inline-block;"></i>
+            <h3 style="font-size: 1.5rem; margin-bottom: 12px;">Don't see your area?</h3>
+            <p style="margin-bottom: 24px;">We're constantly expanding! Call us to check if we can serve your neighborhood.</p>
+            <a href="tel:+5599109730" class="btn-primary"><i class="fas fa-phone-alt"></i> (559) 910-9730</a>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Mobile menu
+    const hamburger = document.getElementById('hamburgerBtn');
+    const navLinks = document.getElementById('navLinks');
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === "#" || targetId === "") return;
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (navLinks.classList.contains('show')) navLinks.classList.remove('show');
+            }
+        });
+    });
+</script>
+{{ end }}

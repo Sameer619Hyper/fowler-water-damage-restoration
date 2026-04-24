@@ -1,0 +1,1075 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+site_url: "/"
+display_url: "/"
+
+collections:
+  - name: "services"
+    label: "Services"
+    folder: "content/services"
+    create: true
+    slug: "{{fields.slug}}"
+    extension: "md"
+    format: "frontmatter"
+    preview_path: "services/{{fields.slug}}"
+
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        hint: "Example: plumbing-services"
+
+      - label: "Custom URL"
+        name: "url"
+        widget: "string"
+        required: false
+        hint: "Optional. Example: /plumbing-services/"
+
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        required: false
+
+      - label: "Layout"
+        name: "layout"
+        widget: "hidden"
+        default: "single"
+
+      - label: "Hero Badge"
+        name: "hero_badge"
+        widget: "string"
+        required: false
+
+      - label: "Hero Title"
+        name: "hero_title"
+        widget: "string"
+
+      - label: "Hero Description"
+        name: "hero_description"
+        widget: "text"
+        required: false
+
+      - label: "Hero Button"
+        name: "hero_button"
+        widget: "object"
+        required: false
+        fields:
+          - label: "Button Text"
+            name: "text"
+            widget: "string"
+            required: false
+          - label: "Button URL"
+            name: "url"
+            widget: "string"
+            required: false
+            default: "#contact"
+
+      - label: "Hero Image"
+        name: "hero_image"
+        widget: "object"
+        required: false
+        fields:
+          - label: "Image"
+            name: "src"
+            widget: "image"
+            required: false
+          - label: "Alt Text"
+            name: "alt"
+            widget: "string"
+            required: false
+
+      - label: "Intro Section"
+        name: "intro"
+        widget: "object"
+        required: false
+        fields:
+          - label: "Section Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Paragraphs"
+            name: "paragraphs"
+            widget: "list"
+            required: false
+            field:
+              label: "Paragraph"
+              name: "paragraph"
+              widget: "text"
+
+      - label: "Features Section"
+        name: "features"
+        widget: "object"
+        required: false
+        fields:
+          - label: "Section Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            required: false
+            fields:
+              - label: "Icon"
+                name: "icon"
+                widget: "string"
+                required: false
+              - label: "Title"
+                name: "title"
+                widget: "string"
+              - label: "Description"
+                name: "description"
+                widget: "text"
+          - label: "Bottom Text"
+            name: "bottom_text"
+            widget: "text"
+            required: false
+
+      - label: "Solutions Section"
+        name: "solutions"
+        widget: "object"
+        required: false
+        fields:
+          - label: "Section Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            required: false
+            fields:
+              - label: "Icon"
+                name: "icon"
+                widget: "string"
+                required: false
+              - label: "Title"
+                name: "title"
+                widget: "string"
+              - label: "Description"
+                name: "description"
+                widget: "text"
+          - label: "Bottom Text"
+            name: "bottom_text"
+            widget: "text"
+            required: false
+
+      - label: "Guarantees Section"
+        name: "guarantees"
+        widget: "object"
+        required: false
+        fields:
+          - label: "Section Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            required: false
+            fields:
+              - label: "Icon"
+                name: "icon"
+                widget: "string"
+                required: false
+              - label: "Title"
+                name: "title"
+                widget: "string"
+              - label: "Description"
+                name: "description"
+                widget: "text"
+          - label: "Bottom Text"
+            name: "bottom_text"
+            widget: "text"
+            required: false
+
+      - label: "Process Section"
+        name: "process"
+        widget: "object"
+        required: false
+        fields:
+          - label: "Section Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Steps"
+            name: "steps"
+            widget: "list"
+            required: false
+            fields:
+              - label: "Step Title"
+                name: "title"
+                widget: "string"
+              - label: "Step Description"
+                name: "description"
+                widget: "text"
+          - label: "Bottom Text"
+            name: "bottom_text"
+            widget: "text"
+            required: false
+
+      - label: "Testimonials Section"
+        name: "testimonials"
+        widget: "object"
+        required: false
+        fields:
+          - label: "Section Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            required: false
+            fields:
+              - label: "Quote"
+                name: "quote"
+                widget: "text"
+              - label: "Author"
+                name: "author"
+                widget: "string"
+
+      - label: "Service Area Section"
+        name: "service_area"
+        widget: "object"
+        required: false
+        fields:
+          - label: "Section Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Description"
+            name: "description"
+            widget: "text"
+            required: false
+          - label: "Badges / Areas"
+            name: "badges"
+            widget: "list"
+            required: false
+            field:
+              label: "Area"
+              name: "area"
+              widget: "string"
+          - label: "Map Embed URL"
+            name: "map_embed_url"
+            widget: "string"
+            required: false
+          - label: "Directions URL"
+            name: "directions_url"
+            widget: "string"
+            required: false
+          - label: "Full Map URL"
+            name: "full_map_url"
+            widget: "string"
+            required: false
+          - label: "Notice"
+            name: "notice"
+            widget: "text"
+            required: false
+
+      - label: "FAQ Section"
+        name: "faq"
+        widget: "object"
+        required: false
+        fields:
+          - label: "Section Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            required: false
+            fields:
+              - label: "Question"
+                name: "question"
+                widget: "string"
+              - label: "Answer"
+                name: "answer"
+                widget: "text"
+
+      - label: "CTA Section"
+        name: "cta"
+        widget: "object"
+        required: false
+        fields:
+          - label: "CTA Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "CTA Description"
+            name: "description"
+            widget: "text"
+            required: false
+          - label: "Button Text"
+            name: "button_text"
+            widget: "string"
+            required: false
+          - label: "Name Placeholder"
+            name: "name_placeholder"
+            widget: "string"
+            required: false
+          - label: "Phone Placeholder"
+            name: "phone_placeholder"
+            widget: "string"
+            required: false
+          - label: "Email Placeholder"
+            name: "email_placeholder"
+            widget: "string"
+            required: false
+          - label: "Form Action"
+            name: "form_action"
+            widget: "string"
+            required: false
+          - label: "Form Method"
+            name: "form_method"
+            widget: "string"
+            required: false
+            default: "post"
+          - label: "Footer Text"
+            name: "footer_text"
+            widget: "text"
+            required: false
+
+      - label: "Body Content"
+        name: "body"
+        widget: "markdown"
+        required: false
+
+  - name: "pages"
+    label: "Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{fields.slug}}"
+    extension: "md"
+    format: "frontmatter"
+    preview_path: "{{fields.slug}}"
+
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        hint: "Example: about-us"
+
+      - label: "Custom URL"
+        name: "url"
+        widget: "string"
+        required: false
+        hint: "Optional. Example: /about-us/"
+
+      - label: "Layout"
+        name: "layout"
+        widget: "hidden"
+        default: "page"
+
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        required: false
+
+      - label: "Hero Title"
+        name: "hero_title"
+        widget: "string"
+        required: false
+
+      - label: "Hero Description"
+        name: "hero_description"
+        widget: "text"
+        required: false
+
+      - label: "Show Contact Form"
+        name: "show_contact_form"
+        widget: "boolean"
+        default: false
+        required: false
+
+      - label: "Contact Form Title"
+        name: "contact_form_title"
+        widget: "string"
+        required: false
+
+      - label: "Contact Form Text"
+        name: "contact_form_text"
+        widget: "text"
+        required: false
+
+      - label: "Body Content"
+        name: "body"
+        widget: "markdown"
+        required: false
+
+  - name: "gallery"
+    label: "Gallery"
+    folder: "content/gallery"
+    create: true
+    slug: "{{fields.slug}}"
+    extension: "md"
+    format: "frontmatter"
+    preview_path: "gallery/{{fields.slug}}"
+
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        hint: "Example: our-work"
+
+      - label: "Custom URL"
+        name: "url"
+        widget: "string"
+        required: false
+        hint: "Optional. Example: /gallery/"
+
+      - label: "Layout"
+        name: "layout"
+        widget: "hidden"
+        default: "gallery"
+
+      - label: "Hero Title"
+        name: "hero_title"
+        widget: "string"
+        required: false
+        default: "Our"
+
+      - label: "Hero Highlight"
+        name: "hero_highlight"
+        widget: "string"
+        required: false
+        default: "Work"
+
+      - label: "Hero Description"
+        name: "hero_description"
+        widget: "text"
+        required: false
+
+      - label: "Gallery Items"
+        name: "gallery"
+        widget: "list"
+        required: false
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+
+          - label: "Category"
+            name: "category"
+            widget: "string"
+            required: false
+            hint: "Example: plumbing, electrical, handyman"
+
+          - label: "Image"
+            name: "image"
+            widget: "image"
+
+          - label: "Description"
+            name: "description"
+            widget: "text"
+            required: false
+
+      - label: "Body Content"
+        name: "body"
+        widget: "markdown"
+        required: false
+
+  - name: "blogs"
+    label: "Blogs"
+    folder: "content/blogs"
+    create: true
+    slug: "{{fields.slug}}"
+    extension: "md"
+    format: "frontmatter"
+    preview_path: "blog/{{fields.slug}}"
+
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        hint: "Example: water-heater-warning-signs"
+
+      - label: "Custom URL"
+        name: "url"
+        widget: "string"
+        required: false
+        hint: "Optional. Example: /blog/water-heater-warning-signs/"
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+
+      - label: "Draft"
+        name: "draft"
+        widget: "boolean"
+        default: false
+
+      - label: "Category"
+        name: "category"
+        widget: "string"
+
+      - label: "Author"
+        name: "author"
+        widget: "string"
+
+      - label: "Read Time"
+        name: "read_time"
+        widget: "string"
+        hint: "Example: 6 min read"
+
+      - label: "Show Share Buttons"
+        name: "show_share"
+        widget: "boolean"
+        default: true
+        required: false
+
+      - label: "Show Related Posts"
+        name: "show_related"
+        widget: "boolean"
+        default: true
+        required: false
+
+      - label: "Featured Image"
+        name: "featured_image"
+        widget: "object"
+        required: false
+        fields:
+          - label: "Image"
+            name: "src"
+            widget: "image"
+          - label: "Alt Text"
+            name: "alt"
+            widget: "string"
+            required: false
+
+      - label: "Quote"
+        name: "quote"
+        widget: "object"
+        required: false
+        fields:
+          - label: "Quote Text"
+            name: "text"
+            widget: "text"
+          - label: "Author"
+            name: "author"
+            widget: "string"
+            required: false
+
+      - label: "Body Content"
+        name: "body"
+        widget: "markdown"
+
+  - name: "settings"
+    label: "Settings"
+    files:
+      - label: "Local Business Schema"
+        name: "localbusiness"
+        file: "data/settings/localbusiness.yml"
+        format: "yml"
+        extension: "yml"
+        fields:
+          - label: "Business Schema Type"
+            name: "schema_type"
+            widget: "select"
+            default: "LocalBusiness"
+            options:
+              - { label: "LocalBusiness", value: "LocalBusiness" }
+              - { label: "Plumber", value: "Plumber" }
+              - { label: "Electrician", value: "Electrician" }
+              - { label: "HouseCleaningService", value: "HouseCleaningService" }
+              - { label: "HomeAndConstructionBusiness", value: "HomeAndConstructionBusiness" }
+              - { label: "GeneralContractor", value: "GeneralContractor" }
+              - { label: "HVACBusiness", value: "HVACBusiness" }
+              - { label: "Locksmith", value: "Locksmith" }
+              - { label: "MovingCompany", value: "MovingCompany" }
+              - { label: "RoofingContractor", value: "RoofingContractor" }
+
+          - label: "Business Name"
+            name: "business_name"
+            widget: "string"
+
+          - label: "Legal Name"
+            name: "legal_name"
+            widget: "string"
+            required: false
+
+          - label: "Description"
+            name: "description"
+            widget: "text"
+            required: false
+
+          - label: "Website URL"
+            name: "url"
+            widget: "string"
+            required: false
+
+          - label: "Canonical Business URL"
+            name: "main_entity_of_page"
+            widget: "string"
+            required: false
+
+          - label: "Phone"
+            name: "telephone"
+            widget: "string"
+            required: false
+
+          - label: "Secondary Phone"
+            name: "telephone_secondary"
+            widget: "string"
+            required: false
+
+          - label: "Email"
+            name: "email"
+            widget: "string"
+            required: false
+
+          - label: "Price Range"
+            name: "price_range"
+            widget: "string"
+            required: false
+
+          - label: "Slogan"
+            name: "slogan"
+            widget: "string"
+            required: false
+
+          - label: "Founding Date"
+            name: "founding_date"
+            widget: "string"
+            required: false
+
+          - label: "Logo"
+            name: "logo"
+            widget: "image"
+            required: false
+
+          - label: "Primary Image"
+            name: "image"
+            widget: "image"
+            required: false
+
+          - label: "Additional Images"
+            name: "images"
+            widget: "list"
+            required: false
+            field:
+              label: "Image"
+              name: "image"
+              widget: "image"
+
+          - label: "Business ID / External IDs"
+            name: "ids"
+            widget: "object"
+            required: false
+            fields:
+              - label: "Google Maps URL"
+                name: "has_map"
+                widget: "string"
+                required: false
+              - label: "Google Place ID"
+                name: "google_place_id"
+                widget: "string"
+                required: false
+              - label: "Tax ID"
+                name: "tax_id"
+                widget: "string"
+                required: false
+
+          - label: "Address"
+            name: "address"
+            widget: "object"
+            fields:
+              - label: "Street Address"
+                name: "street_address"
+                widget: "string"
+                required: false
+              - label: "City"
+                name: "address_locality"
+                widget: "string"
+                required: false
+              - label: "State / Region"
+                name: "address_region"
+                widget: "string"
+                required: false
+              - label: "Postal Code"
+                name: "postal_code"
+                widget: "string"
+                required: false
+              - label: "Country Code"
+                name: "address_country"
+                widget: "string"
+                required: false
+
+          - label: "Geo Coordinates"
+            name: "geo"
+            widget: "object"
+            required: false
+            fields:
+              - label: "Latitude"
+                name: "latitude"
+                widget: "string"
+                required: false
+              - label: "Longitude"
+                name: "longitude"
+                widget: "string"
+                required: false
+
+          - label: "Opening Hours"
+            name: "opening_hours"
+            widget: "list"
+            required: false
+            fields:
+              - label: "Day"
+                name: "day"
+                widget: "select"
+                options:
+                  - "Monday"
+                  - "Tuesday"
+                  - "Wednesday"
+                  - "Thursday"
+                  - "Friday"
+                  - "Saturday"
+                  - "Sunday"
+              - label: "Opens"
+                name: "opens"
+                widget: "string"
+                required: false
+              - label: "Closes"
+                name: "closes"
+                widget: "string"
+                required: false
+              - label: "Closed"
+                name: "closed"
+                widget: "boolean"
+                default: false
+                required: false
+
+          - label: "Service Areas"
+            name: "service_areas"
+            widget: "list"
+            required: false
+            fields:
+              - label: "Area Name"
+                name: "name"
+                widget: "string"
+
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            required: false
+            fields:
+              - label: "Service Name"
+                name: "name"
+                widget: "string"
+              - label: "Service URL"
+                name: "url"
+                widget: "string"
+                required: false
+
+          - label: "Social Profiles"
+            name: "same_as"
+            widget: "list"
+            required: false
+            field:
+              label: "Profile URL"
+              name: "profile"
+              widget: "string"
+
+          - label: "Payment Accepted"
+            name: "payment_accepted"
+            widget: "list"
+            required: false
+            field:
+              label: "Payment Method"
+              name: "method"
+              widget: "string"
+
+          - label: "Currencies Accepted"
+            name: "currencies_accepted"
+            widget: "list"
+            required: false
+            field:
+              label: "Currency"
+              name: "currency"
+              widget: "string"
+
+          - label: "Contact Point"
+            name: "contact_point"
+            widget: "object"
+            required: false
+            fields:
+              - label: "Contact Type"
+                name: "contact_type"
+                widget: "string"
+                required: false
+              - label: "Phone"
+                name: "telephone"
+                widget: "string"
+                required: false
+              - label: "Email"
+                name: "email"
+                widget: "string"
+                required: false
+              - label: "Area Served"
+                name: "area_served"
+                widget: "string"
+                required: false
+              - label: "Available Language"
+                name: "available_language"
+                widget: "list"
+                required: false
+                field:
+                  label: "Language"
+                  name: "language"
+                  widget: "string"
+
+          - label: "Extra"
+            name: "extra"
+            widget: "object"
+            required: false
+            fields:
+              - label: "Has Storefront"
+                name: "has_storefront"
+                widget: "boolean"
+                default: true
+                required: false
+              - label: "Aggregate Rating Value"
+                name: "rating_value"
+                widget: "number"
+                value_type: "float"
+                required: false
+              - label: "Review Count"
+                name: "review_count"
+                widget: "number"
+                value_type: "int"
+                required: false
+      - label: "Footer"
+        name: "footer"
+        file: "data/settings/footer.yml"
+        format: "yml"
+        extension: "yml"
+        fields:
+          - label: "Brand Column"
+            name: "brand"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "string"
+              - label: "Description"
+                name: "description"
+                widget: "text"
+          - label: "Quick Links Column"
+            name: "quick_links"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "string"
+                default: "Quick links"
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                fields:
+                  - label: "Label"
+                    name: "label"
+                    widget: "string"
+                  - label: "URL"
+                    name: "url"
+                    widget: "string"
+          - label: "Contact Column"
+            name: "contact"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "string"
+                default: "Contact"
+              - label: "Phone Label"
+                name: "phone_label"
+                widget: "string"
+                required: false
+              - label: "Phone URL"
+                name: "phone_url"
+                widget: "string"
+                required: false
+                hint: "Example: tel:+15551234567"
+              - label: "Email Label"
+                name: "email_label"
+                widget: "string"
+                required: false
+              - label: "Email URL"
+                name: "email_url"
+                widget: "string"
+                required: false
+                hint: "Example: mailto:hello@example.com"
+              - label: "Address"
+                name: "address"
+                widget: "string"
+                required: false
+          - label: "Social Column"
+            name: "social"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "string"
+                default: "Follow us"
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                required: false
+                fields:
+                  - label: "Platform"
+                    name: "platform"
+                    widget: "select"
+                    options:
+                      - { label: "Facebook", value: "facebook" }
+                      - { label: "Instagram", value: "instagram" }
+                      - { label: "Twitter", value: "twitter" }
+                      - { label: "LinkedIn", value: "linkedin" }
+                      - { label: "YouTube", value: "youtube" }
+                      - { label: "TikTok", value: "tiktok" }
+                  - label: "URL"
+                    name: "url"
+                    widget: "string"
+
+          - label: "Copyright Text"
+            name: "copyright"
+            widget: "string"
+
+          - label: "Bottom Note"
+            name: "bottom_note"
+            widget: "string"
+            required: false
+      - label: "Header"
+        name: "header"
+        file: "data/settings/header.yml"
+        format: "yml"
+        extension: "yml"
+        fields:
+          - label: "Logo"
+            name: "logo"
+            widget: "object"
+            fields:
+              - label: "Text"
+                name: "text"
+                widget: "string"
+                default: "Apex"
+              - label: "Highlight Text"
+                name: "highlight"
+                widget: "string"
+                required: false
+                default: "Service"
+              - label: "URL"
+                name: "url"
+                widget: "string"
+                default: "/"
+
+          - label: "Navigation Links"
+            name: "nav_links"
+            widget: "list"
+            fields:
+              - label: "Label"
+                name: "label"
+                widget: "string"
+
+              - label: "URL"
+                name: "url"
+                widget: "string"
+                required: false
+
+              - label: "Has Dropdown"
+                name: "has_dropdown"
+                widget: "boolean"
+                default: false
+                required: false
+
+              - label: "Dropdown Links"
+                name: "dropdown_links"
+                widget: "list"
+                required: false
+                fields:
+                  - label: "Label"
+                    name: "label"
+                    widget: "string"
+                  - label: "URL"
+                    name: "url"
+                    widget: "string"
+      - label: "Site Colors"
+        name: "colors"
+        file: "data/settings/colors.yml"
+        format: "yml"
+        extension: "yml"
+        fields:
+          - label: "Primary Color"
+            name: "primary"
+            widget: "color"
+            default: "var(--primary);"
+
+          - label: "Primary Hover"
+            name: "primary_hover"
+            widget: "color"
+            default: "#cf711f"
+
+          - label: "Secondary (Dark Blue)"
+            name: "secondary"
+            widget: "color"
+            default: "#458fc7"
+
+          - label: "Background"
+            name: "background"
+            widget: "color"
+            default: "#ffffff"
+
+          - label: "Light Background"
+            name: "bg_light"
+            widget: "color"
+            default: "#f8fafc"
+
+          - label: "Text Primary"
+            name: "text"
+            widget: "color"
+            default: "#1e293b"
+
+          - label: "Text Secondary"
+            name: "text_light"
+            widget: "color"
+            default: "#475569"
+
+          - label: "Border Color"
+            name: "border"
+            widget: "color"
+            default: "#e2e8f0"
+
+          - label: "Card Background"
+            name: "card_bg"
+            widget: "color"
+            default: "#ffffff"
+
+          - label: "Footer Background"
+            name: "footer_bg"
+            widget: "color"
+            default: "#0f172a"
+
+          - label: "Footer Text"
+            name: "footer_text"
+            widget: "color"
+            default: "#cbd5e1"

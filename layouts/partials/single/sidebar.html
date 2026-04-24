@@ -1,0 +1,84 @@
+<div id="sidebar" class="sidebar">
+    <div class="sidebar-container">
+        <h3>Table of Contents</h3>
+        <ul class="main-list">
+            <li class="main-item"><a href="#{{ .Params.player_name | urlize }}-info">{{ .Params.player_name }} Info</a></li>
+            <li class="main-item"><a href="#player-info">Player Info</a></li>
+            <li class="main-item"><a href="#{{ range .Params.games }}{{ $.Params.player_name | urlize }}-{{ .game_name | urlize }}-settings{{ end }}">{{ .Params.player_name }} CS2 Settings</a></li>
+            <ul class="sub-list">
+                {{ range .Params.games }}
+                {{ if eq .game_name "CS2" }} <!-- Filter for CS2 game -->
+                {{ range .game_settings }}
+                <li class="sub-item"><a href="#{{ .setting_type | urlize }}">{{ .setting_type }}</a></li>
+                {{ end }}
+                {{ end }}
+                {{ end }}
+            </ul>
+            <li class="main-item"><a href="#{{ .Params.player_name | urlize }}-pc-specs">{{ .Params.player_name }} PC Specs</a></li>
+        </ul>
+    </div>
+</div>
+
+<style>
+/* Sidebar container styles */
+.sidebar {
+    width: 30%;
+}
+
+.sidebar-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: sticky;
+    top: 20px;
+    margin: 20px 0;
+}
+
+/* Main list styles */
+.main-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.main-item {
+    margin-bottom: 10px;
+}
+
+/* Sub list styles */
+.sub-list {
+    list-style-type: none;
+    padding-left: 20px; /* Adjust padding for sub-items */
+    margin-left: 0;
+}
+
+.sub-item {
+    margin-bottom: 5px;
+}
+
+/* Link styles to ensure black color in all states */
+.sidebar a {
+    color: black; /* Default link color */
+    text-decoration: none; /* Optional: remove underline */
+}
+
+.sidebar a:visited {
+    color: black; /* Visited link color */
+}
+
+.sidebar a:hover {
+    color: black; /* Hover link color */
+}
+
+.sidebar a:active {
+    color: black; /* Active link color */
+}
+
+/* Hide the sidebar on smaller screens */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}
+</style>

@@ -1,0 +1,116 @@
+{{ $footer := site.Data.settings.footer }}
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>{{ $footer.brand.title }}</h4>
+                <p>{{ $footer.brand.description }}</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>{{ $footer.quick_links.title }}</h4>
+                {{ range $footer.quick_links.links }}
+                    <a href="{{ .url | safeURL }}">{{ .label }}</a>
+                {{ end }}
+            </div>
+
+            <div class="footer-col">
+                <h4>{{ $footer.contact.title }}</h4>
+
+                {{ with $footer.contact.phone_url }}
+                    <a href="{{ .  | safeURL }}">
+                        <i class="fas fa-phone-alt"></i>
+                        {{ $footer.contact.phone_label }}
+                    </a>
+                {{ end }}
+
+                {{ with $footer.contact.email_url }}
+                    <a href="{{ . }}">
+                        <i class="fas fa-envelope"></i>
+                        {{ $footer.contact.email_label }}
+                    </a>
+                {{ end }}
+
+                {{ with $footer.contact.address }}
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i>
+                        {{ . }}
+                    </p>
+                {{ end }}
+            </div>
+
+            <div class="footer-col">
+                <h4>{{ $footer.social.title }}</h4>
+                <div class="social-icons">
+                    {{ range $footer.social.links }}
+                        <a href="{{ .url | safeURL }}" target="_blank" rel="noopener noreferrer" aria-label="{{ .platform }}">
+                            {{ if eq .platform "facebook" }}
+                                <i class="fab fa-facebook-f"></i>
+                            {{ else if eq .platform "instagram" }}
+                                <i class="fab fa-instagram"></i>
+                            {{ else if eq .platform "twitter" }}
+                                <i class="fab fa-twitter"></i>
+                            {{ else if eq .platform "linkedin" }}
+                                <i class="fab fa-linkedin-in"></i>
+                            {{ else if eq .platform "youtube" }}
+                                <i class="fab fa-youtube"></i>
+                            {{ else if eq .platform "tiktok" }}
+                                <i class="fab fa-tiktok"></i>
+                            {{ end }}
+                        </a>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            {{ $footer.copyright }}
+            {{ with $footer.bottom_note }} | {{ . }}{{ end }}
+        </div>
+    </div>
+</footer>
+
+<style>
+footer {
+    background: #0f172a;
+    color: #cbd5e1;
+    padding: 60px 0 30px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h4 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.footer-col a {
+    color: #cbd5e1;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.footer-col a:hover {
+   color: var(--primary);
+}
+
+.social-icons a {
+    display: inline-block;
+    margin-right: 18px;
+    font-size: 1.3rem;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #1e293b;
+    font-size: 0.85rem;
+}
+</style>

@@ -1,0 +1,120 @@
+<!-- General Settings -->
+{{ if .Params.general_settings }}
+<div class="general-settings-container">
+    <h2>General Settings</h2>
+    {{ range .Params.general_settings }}
+    <div class="general-settings-box">
+        <h3>{{ .general_setting_type }}</h3>
+        <table>
+            <tbody>
+                {{ range .general_settings_list }}
+                <tr>
+                    <td>{{ .general_setting_name }}</td>
+                    <td>{{ .general_value }}</td>
+                </tr>
+                {{ end }}
+            </tbody>
+        </table>
+    </div>
+    {{ end }}
+</div>
+{{ end }}
+
+<style>
+    .general-settings-container {
+        background-color: #f9f9f9;
+        margin-bottom: 20px;
+        padding: 15px;
+    }
+
+    .general-settings-container h2 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .general-settings-box {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .general-settings-box h3 {
+        margin-bottom: 15px;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .general-settings-box table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .general-settings-box tbody {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .general-settings-box tr {
+        display: flex;
+        flex: 0 0 calc(50% - 10px);
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .general-settings-box td {
+        flex: 1;
+    }
+
+    .general-settings-box td:first-child {
+        color: #A8A8A8;
+        text-align: left; /* Ensure left alignment */
+    }
+
+    .general-settings-box td:nth-child(2) {
+        color: #212121;
+        text-align: right; /* Ensure right alignment */
+    }
+
+    /* Mobile-friendly adjustments */
+    @media (max-width: 768px) {
+        .general-settings-box tbody {
+            gap: 5px;
+        }
+
+        .general-settings-box tr {
+            flex: 0 0 100%; /* Full width on smaller screens */
+        }
+
+        .general-settings-box td {
+            font-size: 0.9rem; /* Slightly smaller font for better fit */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .general-settings-box tbody {
+            gap: 5px;
+        }
+
+        .general-settings-box tr {
+            flex-direction: column; /* Stack content vertically for narrow screens */
+            align-items: flex-start;
+        }
+
+        .general-settings-box td {
+            flex: none; /* Allow table cells to adjust naturally */
+            width: 100%;
+            text-align: left; /* Ensure left alignment on narrow screens */
+            padding: 5px 0;
+        }
+
+        .general-settings-box td:nth-child(2) {
+            text-align: right; /* Keep right alignment for second column */
+        }
+    }
+</style>

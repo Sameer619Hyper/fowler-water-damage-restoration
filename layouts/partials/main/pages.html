@@ -1,0 +1,12 @@
+<div class="main-container">
+    <div class="entry-content">
+        <h1>{{ .Title }}</h1>
+        {{ .Content | safeHTML  }}
+    </div>
+</div>
+
+<style>
+    .entry-content p{
+        margin-bottom: 20px;
+    }
+</style>

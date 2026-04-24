@@ -1,0 +1,66 @@
+<div class="main-container">
+    <h1>Games Listing</h1>
+</div>
+
+<div class="main-container">
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        {{ range where .Site.RegularPages "Section" "games" }}
+        <a href="{{ .RelPermalink }}" style="text-decoration: none; color: inherit; display: block; width: calc(33.33% - 10px);">
+            <div style="display: flex; flex-direction: column; border: 1px solid #ddd; border-radius: 5px; overflow: hidden; background-color: #f9f9f9;">
+                <div style="width: 100%; overflow: hidden; display: flex; align-items: center; justify-content: center; background-color: #fff;">
+                    {{ with .Params.game_image }}
+                    <img src="{{ . }}" alt="{{ $.Title }}" style="max-width: 100%; max-height: 100%; object-fit: cover;" loading="lazy">
+                    {{ else }}
+                    <img src="/images/default-game-image.webp" alt="Default Game Image" style="max-width: 100%; max-height: 100%; object-fit: cover;" loading="lazy">
+                    {{ end }}
+                </div>
+                <div style="padding: 10px;">
+                    <h3 style="margin: 0; font-size: 1.2rem;">{{ .Title }}</h3>
+                    <div style="display: flex; font-size: 14px; justify-content: space-between; align-items: center; margin: 5px 0;">
+                        <span>
+                            <i class="fas fa-user" style="margin-right: 5px;"></i>
+                            {{ $gameName := .Title }}
+                            {{ $playerCount := 0 }}
+                            {{ range .Site.Pages }}
+                                {{ if and (eq .Section "players") (.IsPage) }}
+                                    {{ with .Params.games }}
+                                        {{ range . }}
+                                            {{ if eq .game_name $gameName }}
+                                                {{ $playerCount = add $playerCount 1 }}
+                                            {{ end }}
+                                        {{ end }}
+                                    {{ end }}
+                                {{ end }}
+                            {{ end }}
+                            {{ $playerCount }} Players
+                        </span>
+                        <span>
+                            <i class="fas fa-users" style="margin-right: 5px;"></i>
+                            {{ $teamCount := 0 }}
+                            {{ range .Site.Pages }}
+                                {{ if and (eq .Section "teams") (.IsPage) }}
+                                    {{ with .Params.games }}
+                                        {{ range . }}
+                                            {{ if eq .game_name $gameName }}
+                                                {{ $teamCount = add $teamCount 1 }}
+                                            {{ end }}
+                                        {{ end }}
+                                    {{ end }}
+                                {{ end }}
+                            {{ end }}
+                            {{ $teamCount }} Teams
+                        </span>
+                    </div>
+                    <div style="font-size: 14px; color: #8f8f8f;">
+                        {{ with .Params.description }}
+                        {{ . }}
+                        {{ else }}
+                        No description available for this game.
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </a>
+        {{ end }}
+    </div>
+</div>

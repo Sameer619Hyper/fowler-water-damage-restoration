@@ -1,0 +1,15 @@
+{{ if eq .Section "blogs" -}}
+    <meta name="description" content="{{ .Params.seo_description }}">
+{{- end }}
+
+{{ if .IsHome -}}
+    <meta name="description" content="Fast & reliable water damage restoration in Fresno, CA. Our experts provide 24/7 emergency water extraction, drying, and repair. Call (559) 910-9730.">
+{{- end }}
+
+{{ if eq .Section "pages" -}}
+    <meta name="description" content="{{ .Params.seo_description }}">
+{{- end }}
+
+{{ if eq .Section "services" -}}
+    <meta name="description" content="{{ .Params.seo_description }}">
+{{- end }}

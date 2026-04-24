@@ -1,0 +1,38 @@
+brand:
+  title: Water Damage Restoration Fresno
+  description: Reliable water damage restoration company. Locally owned & operated.
+quick_links:
+  title: Quick links
+  links:
+    - label: Home
+      url: /
+    - label: Services
+      url: /services/
+    - label: Blogs
+      url: /blogs/
+    - label: Contact
+      url: /contact-us/
+    - label: About
+      url: /about-us/
+    - label: Service Areas
+      url: /service-area/
+contact:
+  title: Contact
+  phone_label: (559) 910-9730
+  phone_url: tel:+15599109730
+  email_label: hello@waterdamagerestorationfresno.net
+  email_url: mailto:waterdamagerestorationfresno.net
+  address: "7469 N Palm Ave #113, Fresno, CA 93711"
+social:
+  title: Follow us
+  links:
+    - platform: facebook
+      url: https://facebook.com/
+    - platform: instagram
+      url: https://instagram.com/
+    - platform: twitter
+      url: https://twitter.com/
+    - platform: linkedin
+      url: https://linkedin.com/
+copyright: © 2026 Water Damage Restoration Fresno. All rights reserved.
+bottom_note: Locally trusted

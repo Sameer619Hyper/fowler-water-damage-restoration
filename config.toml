@@ -1,0 +1,21 @@
+baseURL = "https://waterdamagerestorationfresno.net/"
+languageCode = "en-us"
+title = "My Hugo Site"
+
+[permalinks]
+blogs = "/:title/"
+
+[markup]
+  [markup.minify]
+    enable = true
+    disableHTML = false
+    disableCSS = false
+    disableJS = false
+
+[taxonomies]
+category = ""
+tag = ""
+
+disableKinds = ["sitemap", "section"]
+
+paginate = 30  # Number of items per page

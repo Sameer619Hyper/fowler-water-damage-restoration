@@ -1,0 +1,20 @@
+Clovis:93611
+Fowler:93625
+Sanger:93657
+Kerman:93630
+Selma:93662
+Kingsburg:93631
+Reedley:93654
+Parlier:93648
+Madera:93636
+Hanford:93230
+Dinuba:93618
+Lemoore:93245
+Mendota:93640
+Orange Cove:93646
+Firebaugh:93622
+Chowchilla:93610
+Visalia:93277
+Tulare:93274
+Merced:95340
+Coalinga:93210
