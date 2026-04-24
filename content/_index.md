@@ -1,44 +1,47 @@
 ---
 title: "Water Damage Restoration in Fowler, CA"
-slug: "waterdamagerestorationfowlerca.netlify.app"
-zipcode: "93625"
-url: "waterdamagerestorationfowlerca.netlify.app"
-city_name: Fowler
-service_type: "Water Damage Restoration"
 description: "Professional Water Damage Restoration in Fowler, CA for homes and businesses dealing with leaks, flooding, storm damage, sewage issues, and moisture problems in 93625."
-hero_badge: "24/7 Emergency Water Damage Help in Fowler, CA"
-hero_title: "Water Damage Restoration in Fowler, CA When Every Minute Matters"
-hero_description: "When water spreads through your home or business, fast action can help limit structural damage, mold risk, and costly repairs. Call (559) 910-9730 for responsive Water Damage Restoration in Fowler, CA, including emergency water removal, drying, cleanup, and repair support throughout 93625."
-hero_button:
-  text: "Call (559) 910-9730 Now"
-  url: "tel:+15599109730"
-hero_image:
-  src: "/images/water-damage-restoration-fowler-ca.jpg"
-  alt: "Water damage restoration technicians responding to a flooded property in Fowler CA"
 
-intro:
+hero:
+  badge:
+    icon: "fas fa-medal"
+    text: "24/7 Emergency Water Damage Help in Fowler, CA"
+  title: "Water Damage Restoration in Fowler, CA When Every Minute Matters"
+  description: "When water spreads through your home or business, fast action can help limit structural damage, mold risk, and costly repairs. Call (559) 910-9730 for responsive Water Damage Restoration in Fowler, CA, including emergency water removal, drying, cleanup, and repair support throughout 93625."
+  image:
+    src: "/images/water-damage-restoration-fowler-ca.jpg"
+    alt: "Water damage restoration technicians responding to a flooded property in Fowler CA"
+  primary_button:
+    text: "Call (559) 910-9730 Now"
+    url: "tel:+15599109730"
+  secondary_button:
+    text: "Get free quote"
+    url: "/contact-us/"
+
+story:
   title: "Reliable Water Damage Restoration for Fowler Homes and Businesses"
-  paragraphs:
-    - "Water damage in Fowler can start with a broken supply line, roof leak, overflowing appliance, slab leak, storm runoff, or plumbing backup. Once moisture reaches flooring, drywall, baseboards, crawl spaces, or commercial interiors, it needs to be handled quickly and carefully."
-    - "Our Water Damage Restoration Fowler service focuses on stopping further damage, extracting standing water, locating hidden moisture, and drying affected materials with professional equipment such as moisture meters, thermal imaging, extractors, air movers, and dehumidifiers."
-    - "Whether you need Residential Water Damage Restoration Fowler after a bathroom leak or Commercial Water Damage Restoration Fowler after a business interruption, call (559) 910-9730 for practical help in Fowler, CA 93625 and nearby areas."
+  highlight: "Water damage in Fowler can start with a broken supply line, roof leak, overflowing appliance, slab leak, storm runoff, or plumbing backup."
+  intro:
+    title: "Fast, Careful Help When Water Damage Happens"
+    paragraphs:
+      - "Once moisture reaches flooring, drywall, baseboards, crawl spaces, or commercial interiors, it needs to be handled quickly and carefully."
+      - "Our Water Damage Restoration Fowler service focuses on stopping further damage, extracting standing water, locating hidden moisture, and drying affected materials with professional equipment such as moisture meters, thermal imaging, extractors, air movers, and dehumidifiers."
+      - "Whether you need Residential Water Damage Restoration Fowler after a bathroom leak or Commercial Water Damage Restoration Fowler after a business interruption, call (559) 910-9730 for practical help in Fowler, CA 93625 and nearby areas."
 
 features:
-  title: "Why Fowler Property Owners Call for Fast Water Damage Help"
-  items:
-    - icon: "clock"
-      title: "Emergency Response Mindset"
-      description: "Water can move quickly behind walls, under flooring, and into structural materials. We focus on fast assessment, immediate water mitigation, and clear next steps to help reduce secondary damage."
-    - icon: "droplets"
-      title: "Thorough Water Extraction"
-      description: "Emergency Water Removal Fowler services may include removing standing water from floors, carpets, rooms, and affected areas before the drying process begins."
-    - icon: "fan"
-      title: "Targeted Drying and Dehumidification"
-      description: "Structural Drying Fowler requires more than surface cleanup. Air movers, dehumidifiers, and moisture readings help guide drying until affected materials are properly addressed."
-    - icon: "shield"
-      title: "Safety-Focused Cleanup"
-      description: "Mold Remediation Fowler and Sewage Cleanup Fowler require careful containment, sanitation awareness, and safe handling procedures to protect occupants and property."
-  bottom_text: "From sudden leaks to storm-related flooding, our team helps Fowler property owners move from emergency response to cleanup, drying, and restoration with steady communication."
+  - icon: "clock"
+    title: "Emergency Response Mindset"
+    description: "Water can move quickly behind walls, under flooring, and into structural materials. We focus on fast assessment, immediate water mitigation, and clear next steps to help reduce secondary damage."
+  - icon: "droplets"
+    title: "Thorough Water Extraction"
+    description: "Emergency Water Removal Fowler services may include removing standing water from floors, carpets, rooms, and affected areas before the drying process begins."
+  - icon: "fan"
+    title: "Targeted Drying and Dehumidification"
+    description: "Structural Drying Fowler requires more than surface cleanup. Air movers, dehumidifiers, and moisture readings help guide drying until affected materials are properly addressed."
+  - icon: "shield"
+    title: "Safety-Focused Cleanup"
+    description: "Mold Remediation Fowler and Sewage Cleanup Fowler require careful containment, sanitation awareness, and safe handling procedures to protect occupants and property."
+
 solutions:
   title: "Water Damage Restoration Services in Fowler, CA"
   items:
@@ -46,38 +49,37 @@ solutions:
       title: "Emergency Water Remediation Fowler"
       description: "Emergency Water Remediation Fowler helps address active leaks, wet materials, and urgent moisture problems before they spread further through the property."
       link_text: "Get help now"
-      link_url: "waterdamagerestorationfowlerca.netlify.app//emergency-water-remediation/"
+      link_url: "/emergency-water-remediation/"
     - icon: "waves"
       title: "Flood Restoration Fowler"
       description: "Flood Restoration Fowler focuses on removing water, assessing affected areas, drying structural materials, and supporting cleanup after indoor flooding or outside water intrusion."
       link_text: "Explore service"
-      link_url: "waterdamagerestorationfowlerca.netlify.app//flood-restoration/"
+      link_url: "/flood-restoration/"
     - icon: "cloud-rain"
       title: "Storm Damage Restoration Fowler"
       description: "Storm Damage Restoration Fowler may be needed after wind-driven rain, roof leaks, drainage issues, or water intrusion caused by severe weather around the area."
       link_text: "View service details"
-      link_url: "waterdamagerestorationfowlerca.netlify.app//storm-damage-restoration/"
+      link_url: "/storm-damage-restoration/"
     - icon: "biohazard"
       title: "Mold Remediation Fowler"
       description: "Mold Remediation Fowler helps address mold concerns that can develop after leaks, humidity, hidden moisture, or water damage that was not dried correctly."
       link_text: "Learn more"
-      link_url: "waterdamagerestorationfowlerca.netlify.app//mold-remediation/"
+      link_url: "/mold-remediation/"
     - icon: "trash"
       title: "Sewage Cleanup Fowler"
       description: "Sewage Cleanup Fowler involves careful removal, sanitation, and drying after toilet overflows, sewer backups, or contaminated water events that require safety-focused handling."
       link_text: "See full service"
-      link_url: "waterdamagerestorationfowlerca.netlify.app//sewage-cleanup/"
+      link_url: "/sewage-cleanup/"
     - icon: "hammer"
       title: "Water Damage Repair Fowler"
       description: "Water Damage Repair Fowler can include restoration support for damaged drywall, trim, flooring, cabinets, and other materials affected by leaks or flooding."
       link_text: "Learn more"
-      link_url: "waterdamagerestorationfowlerca.netlify.app//water-damage-repair/"
+      link_url: "/water-damage-repair/"
     - icon: "thermometer"
       title: "Structural Drying Fowler"
       description: "Structural Drying Fowler uses moisture detection, airflow, and dehumidification to help dry wet building materials and reduce the chance of lingering moisture problems."
       link_text: "Explore service"
-      link_url: "waterdamagerestorationfowlerca.netlify.app//structural-drying/"
-  bottom_text: "Every water loss is different, so the right solution depends on the source of water, the materials affected, how long moisture has been present, and whether safety concerns such as sewage or mold are involved."
+      link_url: "/structural-drying/"
 
 guarantees:
   title: "A Careful Restoration Approach You Can Feel Confident About"
@@ -94,7 +96,6 @@ guarantees:
     - icon: "home"
       title: "Property-Focused Care"
       description: "Our goal is to help limit disruption, protect salvageable materials when possible, and guide your home or business toward a cleaner, drier, safer condition."
-  bottom_text: "Call (559) 910-9730 for dependable 24/7 Water Damage Restoration Fowler support when leaks, flooding, or moisture damage need professional attention."
 
 process:
   title: "Our Water Damage Restoration Process"
@@ -107,7 +108,6 @@ process:
       description: "Air movers and dehumidifiers are placed strategically to help dry affected materials. Moisture readings help track progress and guide equipment adjustments."
     - title: "4. Cleanup, Repair Planning, and Final Guidance"
       description: "After drying and cleanup, we help clarify repair needs, remaining concerns, and documentation that may be useful for property owners or insurance coordination."
-  bottom_text: "The sooner water mitigation begins, the better the chance of reducing hidden moisture, odors, mold concerns, and long-term structural damage."
 
 testimonials:
   title: "What Fowler Customers Say"
@@ -159,6 +159,7 @@ cta:
   title: "Need Water Damage Restoration in Fowler, CA?"
   description: "Do not wait for water to spread deeper into floors, walls, or structural materials. Call (559) 910-9730 for calm, professional help with Water Damage Restoration Fowler, emergency water removal, drying, cleanup, and repair guidance."
   button_text: "Call (559) 910-9730"
+  button_url: "tel:+15599109730"
   name_placeholder: "Your Name"
   phone_placeholder: "Your Phone Number"
   email_placeholder: "Your Email Address"
